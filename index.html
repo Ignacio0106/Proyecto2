@@ -8,15 +8,16 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="./css/bootstrap.min (4).css" />
   <link rel="stylesheet" href="./css/cssIndex.css" />
+  <link rel="stylesheet" href="./css/modoOscuro.css" />
   <!-- Bootstrap Icons CDN -->
-  <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
 </head>
 
 <body>
   <header>
     <!-- Barra navegación -->
-    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <nav id="navbar" class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="index.html">TechZone</a>
         <button
@@ -31,11 +32,9 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="catalogo-libros.html"
-                >Catálogo</a
-              >
+              <a class="nav-link active" aria-current="page" href="catalogo-libros.html">Catálogo</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="contacto-storage.html">Contacto</a>
@@ -54,8 +53,8 @@
                 <li><a class="dropdown-item" href="factura-libros.html">Facturar</a></li>
               </ul>
             </li>
-            <li class="nav-item">
-              <a class="btn btn-light position-relative" href="compra.html">
+            <li class="nav-item me-3">
+              <a class="btn btn-light position-relative" href="compra.html" id="cartBtn">
                 <i class="bi bi-cart-fill"></i>
                 <span
                   class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
@@ -64,6 +63,10 @@
                   <span class="visually-hidden">productos en el carrito</span>
                 </span>
               </a>
+            </li>
+            
+             <li class="nav-item">
+              <button id="btnToggleDark" class="btn btn-outline-light">Modo Oscuro</button>
             </li>
           </ul>
         </div>
@@ -79,11 +82,12 @@
       </p>
     </section>
 
-<section class="mb-5">
+    <section class="mb-5">
       <!-- Carrusel -->
       <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
@@ -91,19 +95,19 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="img/carrusel1.jpg" class="d-block w-100 carrusel-img" alt="...">
+            <img src="img/carrusel1.jpg" class="d-block w-100 carrusel-img" alt="..." />
           </div>
           <div class="carousel-item">
-            <img src="img/carrusel2.jpg" class="d-block w-100 carrusel-img" alt="...">
+            <img src="img/carrusel2.jpg" class="d-block w-100 carrusel-img" alt="..." />
           </div>
           <div class="carousel-item">
-            <img src="img/carrusel3.jpg" class="d-block w-100 carrusel-img" alt="...">
+            <img src="img/carrusel3.jpg" class="d-block w-100 carrusel-img" alt="..." />
           </div>
           <div class="carousel-item">
-            <img src="img/carrusel4.jpg" class="d-block w-100 carrusel-img" alt="...">
+            <img src="img/carrusel4.jpg" class="d-block w-100 carrusel-img" alt="..." />
           </div>
           <div class="carousel-item">
-            <img src="img/carrusel5.jpg" class="d-block w-100 carrusel-img" alt="...">
+            <img src="img/carrusel5.jpg" class="d-block w-100 carrusel-img" alt="..." />
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -111,7 +115,7 @@
           <span class="visually-hidden">Previous</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-          <span class="custom-arrow" aria-hidden="true">&#11166;</span> 
+          <span class="custom-arrow" aria-hidden="true">&#11166;</span>
 
           <span class="visually-hidden">Next</span>
         </button>
@@ -119,161 +123,159 @@
     </section>
 
     <!-- Cards con carruseles para Productos, Servicios y Destacados -->
-<section class="row row-cols-1 row-cols-md-3 g-4">
-  <!-- Productos -->
-  <div class="col">
-    <div class="card h-100 border-primary shadow-sm">
-      <div class="card-header bg-primary text-white text-center">
-        <h4 class="my-0">Productos</h4>
-      </div>
-      <div id="carouselProductos" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="img/Mouse inalámbrico Logitech.png" class="d-block w-100" alt="Mouse inalámbrico Logitech" />
-            <div class="p-3 text-center">
-              <h5>Mouse inalámbrico Logitech</h5>
-              <p class="mb-1">₡18,000 - Mouse ergonómico con conexión Bluetooth.</p>
-              <a href="catalogo-libros.html" class="btn btn-sm btn-primary">Ver más</a>
-            </div>
+    <section class="row row-cols-1 row-cols-md-3 g-4">
+      <!-- Productos -->
+      <div class="col">
+        <div class="card h-100 border-primary shadow-sm">
+          <div class="card-header bg-primary text-white text-center">
+            <h4 class="my-0">Productos</h4>
           </div>
-          <div class="carousel-item">
-            <img src="img/Audífonos gamer HyperX.png" class="d-block w-100" alt="Audífonos gamer HyperX" />
-            <div class="p-3 text-center">
-              <h5>Audífonos gamer HyperX</h5>
-              <p class="mb-1">₡52,000 - Sonido envolvente, micrófono integrado.</p>
-              <a href="catalogo-libros.html" class="btn btn-sm btn-primary">Ver más</a>
+          <div id="carouselProductos" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="img/Mouse inalámbrico Logitech.png" class="d-block w-100" alt="Mouse inalámbrico Logitech" />
+                <div class="p-3 text-center">
+                  <h5>Mouse inalámbrico Logitech</h5>
+                  <p class="mb-1">₡18,000 - Mouse ergonómico con conexión Bluetooth.</p>
+                  <a href="catalogo-libros.html" class="btn btn-sm btn-primary">Ver más</a>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/Audífonos gamer HyperX.png" class="d-block w-100" alt="Audífonos gamer HyperX" />
+                <div class="p-3 text-center">
+                  <h5>Audífonos gamer HyperX</h5>
+                  <p class="mb-1">₡52,000 - Sonido envolvente, micrófono integrado.</p>
+                  <a href="catalogo-libros.html" class="btn btn-sm btn-primary">Ver más</a>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/Monitor Samsung 24'' LED.png" class="d-block w-100" alt="Monitor Samsung 24'' LED" />
+                <div class="p-3 text-center">
+                  <h5>Monitor Samsung 24'' LED</h5>
+                  <p class="mb-1">₡89,000 - Resolución Full HD, HDMI y VGA.</p>
+                  <a href="catalogo-libros.html" class="btn btn-sm btn-primary">Ver más</a>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="carousel-item">
-            <img src="img/Monitor Samsung 24'' LED.png" class="d-block w-100" alt="Monitor Samsung 24'' LED" />
-            <div class="p-3 text-center">
-              <h5>Monitor Samsung 24'' LED</h5>
-              <p class="mb-1">₡89,000 - Resolución Full HD, HDMI y VGA.</p>
-              <a href="catalogo-libros.html" class="btn btn-sm btn-primary">Ver más</a>
-            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselProductos" data-bs-slide="prev">
+              <span class="custom-arrow" aria-hidden="true">&#11164;</span>
+              <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselProductos" data-bs-slide="next">
+              <span class="custom-arrow" aria-hidden="true">&#11166;</span>
+              <span class="visually-hidden">Siguiente</span>
+            </button>
           </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselProductos" data-bs-slide="prev">
-          <span class="custom-arrow" aria-hidden="true">&#11164;</span>
-          <span class="visually-hidden">Anterior</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselProductos" data-bs-slide="next">
-          <span class="custom-arrow" aria-hidden="true">&#11166;</span>
-          <span class="visually-hidden">Siguiente</span>
-        </button>
       </div>
-    </div>
-  </div>
 
-  <!-- Servicios -->
-  <div class="col">
-    <div class="card h-100 border-success shadow-sm">
-      <div class="card-header bg-success text-white text-center">
-        <h4 class="my-0">Servicios</h4>
-      </div>
-      <div id="carouselServicios" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="img/Servicio de mantenimiento técnico.jpg" class="d-block w-100" alt="Servicio de mantenimiento técnico" />
-            <div class="p-3 text-center">
-              <h5>Servicio de mantenimiento técnico</h5>
-              <p class="mb-1">₡25,000 - Revisión, limpieza y optimización de computadoras.</p>
-              <a href="catalogo-libros.html" class="btn btn-sm btn-success">Ver más</a>
-            </div>
+      <!-- Servicios -->
+      <div class="col">
+        <div class="card h-100 border-success shadow-sm">
+          <div class="card-header bg-success text-white text-center">
+            <h4 class="my-0">Servicios</h4>
           </div>
-          <div class="carousel-item">
-            <img src="img/Diseño de página web.webp" class="d-block w-100" alt="Diseño de página web" />
-            <div class="p-3 text-center">
-              <h5>Diseño de página web</h5>
-              <p class="mb-1">₡150,000 - Sitio web personalizado para tu negocio o proyecto.</p>
-              <a href="catalogo-libros.html" class="btn btn-sm btn-success">Ver más</a>
+          <div id="carouselServicios" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="img/Servicio de mantenimiento técnico.jpg" class="d-block w-100" alt="Servicio de mantenimiento técnico" />
+                <div class="p-3 text-center">
+                  <h5>Servicio de mantenimiento técnico</h5>
+                  <p class="mb-1">₡25,000 - Revisión, limpieza y optimización de computadoras.</p>
+                  <a href="catalogo-libros.html" class="btn btn-sm btn-success">Ver más</a>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/Diseño de página web.webp" class="d-block w-100" alt="Diseño de página web" />
+                <div class="p-3 text-center">
+                  <h5>Diseño de página web</h5>
+                  <p class="mb-1">₡150,000 - Sitio web personalizado para tu negocio o proyecto.</p>
+                  <a href="catalogo-libros.html" class="btn btn-sm btn-success">Ver más</a>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/image-not-found.jpg" class="d-block w-100" alt="Instalación de redes inalámbricas" />
+                <div class="p-3 text-center">
+                  <h5>Mantenimiento y limpieza de PC</h5>
+                  <p class="mb-1">¢15000 - Revisión y limpieza interna para mejorar el rendimiento</p>
+                  <a href="catalogo-libros.html" class="btn btn-sm btn-success">Ver más</a>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="carousel-item">
-            <img src="img/image-not-found.jpg" class="d-block w-100" alt="Instalación de redes inalámbricas" />
-            <div class="p-3 text-center">
-              <h5>Mantenimiento y limpieza de PC</h5>
-              <p class="mb-1">¢15000 - Revisión y limpieza interna para mejorar el rendimiento</p>
-              <a href="catalogo-libros.html" class="btn btn-sm btn-success">Ver más</a>
-            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselServicios" data-bs-slide="prev">
+              <span class="custom-arrow" aria-hidden="true">&#11164;</span>
+              <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselServicios" data-bs-slide="next">
+              <span class="custom-arrow" aria-hidden="true">&#11166;</span>
+              <span class="visually-hidden">Siguiente</span>
+            </button>
           </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselServicios" data-bs-slide="prev">
-          <span class="custom-arrow" aria-hidden="true">&#11164;</span>
-          <span class="visually-hidden">Anterior</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselServicios" data-bs-slide="next">
-          <span class="custom-arrow" aria-hidden="true">&#11166;</span>
-          <span class="visually-hidden">Siguiente</span>
-        </button>
       </div>
-    </div>
-  </div>
 
-  <!-- Productos Destacados -->
-  <div class="col">
-    <div class="card h-100 border-warning shadow-sm">
-      <div class="card-header bg-warning text-dark text-center">
-        <h4 class="my-0">Destacados</h4>
-      </div>
-      <div id="carouselDestacados" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="img/Laptop Lenovo ThinkPad.png" class="d-block w-100" alt="Laptop Lenovo ThinkPad" />
-            <div class="p-3 text-center">
-              <h5>Laptop Lenovo ThinkPad</h5>
-              <p class="mb-1">₡750,000 - Procesador Intel Core i7, 16GB RAM, SSD 512GB.</p>
-              <a href="catalogo-libros.html" class="btn btn-sm btn-warning">Ver más</a>
-            </div>
+      <!-- Productos Destacados -->
+      <div class="col">
+        <div class="card h-100 border-warning shadow-sm">
+          <div class="card-header bg-warning text-dark text-center">
+            <h4 class="my-0">Destacados</h4>
           </div>
-          <div class="carousel-item">
-            <img src="img/Tablet Samsung Galaxy A7.webp" class="d-block w-100" alt="Tablet Samsung Galaxy A7" />
-            <div class="p-3 text-center">
-              <h5>Tablet Samsung Galaxy A7</h5>
-              <p class="mb-1">₡135,000 - Pantalla 10.4'', 3GB RAM, 64GB almacenamiento.</p>
-              <a href="catalogo-libros.html" class="btn btn-sm btn-warning">Ver más</a>
+          <div id="carouselDestacados" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="img/Laptop Lenovo ThinkPad.png" class="d-block w-100" alt="Laptop Lenovo ThinkPad" />
+                <div class="p-3 text-center">
+                  <h5>Laptop Lenovo ThinkPad</h5>
+                  <p class="mb-1">₡750,000 - Procesador Intel Core i7, 16GB RAM, SSD 512GB.</p>
+                  <a href="catalogo-libros.html" class="btn btn-sm btn-warning">Ver más</a>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/Tablet Samsung Galaxy A7.webp" class="d-block w-100" alt="Tablet Samsung Galaxy A7" />
+                <div class="p-3 text-center">
+                  <h5>Tablet Samsung Galaxy A7</h5>
+                  <p class="mb-1">₡135,000 - Pantalla 10.4'', 3GB RAM, 64GB almacenamiento.</p>
+                  <a href="catalogo-libros.html" class="btn btn-sm btn-warning">Ver más</a>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/Impresora Epson EcoTank.png" class="d-block w-100" alt="Impresora Epson EcoTank" />
+                <div class="p-3 text-center">
+                  <h5>Impresora Epson EcoTank</h5>
+                  <p class="mb-1">₡110,000 - Multifuncional, sistema continuo de tinta.</p>
+                  <a href="catalogo-libros.html" class="btn btn-sm btn-warning">Ver más</a>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="carousel-item">
-            <img src="img/Impresora Epson EcoTank.png" class="d-block w-100" alt="Impresora Epson EcoTank" />
-            <div class="p-3 text-center">
-              <h5>Impresora Epson EcoTank</h5>
-              <p class="mb-1">₡110,000 - Multifuncional, sistema continuo de tinta.</p>
-              <a href="catalogo-libros.html" class="btn btn-sm btn-warning">Ver más</a>
-            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselDestacados" data-bs-slide="prev">
+              <span class="custom-arrow" aria-hidden="true">&#11164;</span>
+              <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselDestacados" data-bs-slide="next">
+              <span class="custom-arrow" aria-hidden="true">&#11166;</span>
+              <span class="visually-hidden">Siguiente</span>
+            </button>
           </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselDestacados" data-bs-slide="prev">
-          <span class="custom-arrow" aria-hidden="true">&#11164;</span>
-          <span class="visually-hidden">Anterior</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselDestacados" data-bs-slide="next">
-          <span class="custom-arrow" aria-hidden="true">&#11166;</span>
-          <span class="visually-hidden">Siguiente</span>
-        </button>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
   </main>
 
-   <!-- Footer -->
-<!-- Footer -->
-<footer class="bg-primary text-white pt-4 pb-2 mt-5" data-bs-theme="dark">
-  <div class="container text-center">
-    <h5 class="mb-3">TechZone</h5>
-    <p class="mb-2">Productos y servicios tecnológicos a tu alcance</p>
-    <div class="d-flex justify-content-center mb-3">
-      <a href="#" class="text-white mx-2"><i class="bi bi-facebook fs-5"></i></a>
-      <a href="#" class="text-white mx-2"><i class="bi bi-instagram fs-5"></i></a>
-      <a href="#" class="text-white mx-2"><i class="bi bi-twitter fs-5"></i></a>
-      <a href="#" class="text-white mx-2"><i class="bi bi-envelope fs-5"></i></a>
+  <!-- Footer -->
+  <footer class="bg-primary text-white pt-4 pb-2 mt-5" data-bs-theme="dark">
+    <div class="container text-center">
+      <h5 class="mb-3">TechZone</h5>
+      <p class="mb-2">Productos y servicios tecnológicos a tu alcance</p>
+      <div class="d-flex justify-content-center mb-3">
+        <a href="#" class="text-white mx-2"><i class="bi bi-facebook fs-5"></i></a>
+        <a href="#" class="text-white mx-2"><i class="bi bi-instagram fs-5"></i></a>
+        <a href="#" class="text-white mx-2"><i class="bi bi-twitter fs-5"></i></a>
+        <a href="#" class="text-white mx-2"><i class="bi bi-envelope fs-5"></i></a>
+      </div>
+      <p class="text-white small mb-0">&copy; 2025 TechZone. Todos los derechos reservados.</p>
     </div>
-    <p class="text-white small mb-0">&copy; 2025 TechZone. Todos los derechos reservados.</p>
-  </div>
-</footer>
-
+  </footer>
 
   <!-- Bootstrap JS Bundle -->
   <script
@@ -281,6 +283,8 @@
     integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
     crossorigin="anonymous"
   ></script>
+<script src="js/modoOscuro.js"></script>
+
 </body>
 
 </html>
