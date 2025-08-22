@@ -1,48 +1,33 @@
 document.addEventListener('DOMContentLoaded', function() {
     const themeLink = document.getElementById('theme-link');
-    const toggleButton = document.getElementById('btnToggleDark');
+    const toggleButton = document.getElementById('btnTemaCompu') || document.getElementById('btnToggleDark');
     const body = document.body;
     const navbar = document.getElementById('navbar');
-    const cartBtn = document.getElementById('cartBtn');
-    const logo = document.getElementById('LogoImagen');
-    const footer = document.querySelector('footer'); // <--- footer agregado
+    const header = document.getElementById('mainHeader');
+    const footer = document.getElementById('mainFooter');
 
     const lightThemePath = './css/bootstrap-lux.min.css';
     const darkThemePath = './css/bootstrap-darkly.min.css';
 
-    const lightIconClass = 'bi-moon';
-    const darkIconClass = 'bi-sun';
-
-    const logoLightSrc = 'img/LogoAzul.jpg';
-    const logoDarkSrc = 'img/LogoOscuro.jpg';
-
     function applyTheme(isDarkMode) {
         if (isDarkMode) {
             themeLink.href = darkThemePath;
-            body.classList.remove('fondoBlanco');
             body.classList.add('dark-mode');
+            body.classList.remove('fondoBlanco');
 
+            // Cambiar clases en lugar de estilos inline
+            if (header) {
+                header.classList.remove('light-header-footer');
+                header.classList.add('dark-header-footer');
+            }
             if (navbar) {
-                navbar.style.backgroundColor = '#303030';
-                navbar.classList.replace('navbar-light', 'navbar-dark');
-                navbar.setAttribute('data-bs-theme', 'dark');
+                navbar.classList.remove('light-header-footer');
+                navbar.classList.add('dark-header-footer');
             }
-
-            if (cartBtn) cartBtn.classList.replace('btn-light', 'btn-outline-warning');
-
-            if (toggleButton) {
-                toggleButton.classList.replace('btn-outline-light', 'btn-outline-warning');
-                toggleButton.classList.remove(lightIconClass);
-                toggleButton.classList.add(darkIconClass);
-                toggleButton.setAttribute('aria-label', 'Activar tema claro');
+            if (footer) {
+                footer.classList.remove('light-header-footer');
+                footer.classList.add('dark-header-footer');
             }
-
-            if (logo) {
-                logo.src = logoDarkSrc;
-                logo.alt = 'Logo TechZone Blanco';
-            }
-
-            if (footer) footer.style.backgroundColor = '#303030'; // Color oscuro para footer
 
             localStorage.setItem('theme', 'dark');
         } else {
@@ -50,31 +35,18 @@ document.addEventListener('DOMContentLoaded', function() {
             body.classList.remove('dark-mode');
             body.classList.add('fondoBlanco');
 
+            if (header) {
+                header.classList.remove('dark-header-footer');
+                header.classList.add('light-header-footer');
+            }
             if (navbar) {
-                navbar.style.backgroundColor = '#385a7f';
-                navbar.classList.replace('navbar-dark', 'navbar-light');
-                navbar.setAttribute('data-bs-theme', 'light');
+                navbar.classList.remove('dark-header-footer');
+                navbar.classList.add('light-header-footer');
             }
-
-            if (cartBtn) cartBtn.classList.replace('btn-outline-warning', 'btn-light');
-
-            if (toggleButton) {
-                toggleButton.classList.replace('btn-outline-warning', 'btn-outline-light');
-                toggleButton.classList.remove(darkIconClass);
-                toggleButton.classList.add(lightIconClass);
-                toggleButton.setAttribute('aria-label', 'Activar tema oscuro');
+            if (footer) {
+                footer.classList.remove('dark-header-footer');
+                footer.classList.add('light-header-footer');
             }
-
-            if (logo) {
-                logo.src = logoLightSrc;
-                logo.alt = 'Logo TechZone';
-                logo.style.width = '';
-                logo.style.height = '';
-                logo.style.margin = '';
-                logo.style.objectFit = '';
-            }
-
-            if (footer) footer.style.backgroundColor = '#385a7f'; // Color claro para footer
 
             localStorage.setItem('theme', 'light');
         }

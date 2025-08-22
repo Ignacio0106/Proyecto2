@@ -1,24 +1,30 @@
-document.addEventListener("DOMContentLoaded",()=>{
-  //Lista de Libros
-  displayBooks(tecnology)
-displayCategorias();
+document.addEventListener("DOMContentLoaded", () => {
+  // Mostrar todos los productos inicialmente
+  displayBooks(tecnology);
 
-  // Escuchar cambio en el filtro de categorías
-  const filterSelect = document.getElementById("filter");
-  filterSelect.addEventListener("change", () => {
-      const category = filterSelect.value;
-      let filteredProducts;
+  // Mostrar las categorías en el filtro
+ displayCategorias();
 
-      // Si la categoría es "all", mostrar todos, si no, filtrar por categoría
-      if (category === "all") {
-          filteredProducts = tecnology;
-      } else {
-          filteredProducts = tecnology.filter(item => item.categoria === category);
-      }
+    // Escuchar cambio en el filtro de categorías
+    const filterSelect = document.getElementById("filter");
+    filterSelect.addEventListener("change", () => {
+        const category = filterSelect.value.toLowerCase(); // Normalizamos a minúscula
+        let filteredProducts;
 
-      // Mostrar los productos filtrados
-      displayProducts(filteredProducts);
-  });
+        if (category === "all") {
+            filteredProducts = tecnology;
+        } else {
+            filteredProducts = tecnology.filter(item => 
+                item.categoria.toLowerCase() === category
+            );
+        }
+
+        console.log("Categoría seleccionada:", category);
+        console.log("Productos filtrados:", filteredProducts);
+
+        // Mostrar los productos filtrados usando la misma función
+        displayBooks(filteredProducts);
+    });
 });
 
 function displayBooks(data){
@@ -62,10 +68,20 @@ function displayBooks(data){
           </button>
         </div>
       <div class="card-body d-flex flex-column">
-        <h5 class="card-title text-center libro-name">${book.nombre}</h5>
-        <p class="card-text text-center">${book.descripcion}</p>
-        <h5 class="card-text text-info text-center fw-bold mb-0 libro-year">&cent;${book.precio}</h5>
-        <div class="input-group mb-3">
+        <h5 class="card-title text-center libro-name fw-bold fs-4 text-primary mb-2" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.2);">
+      ${book.nombre}
+    </h5>
+
+    <!-- Descripción -->
+    <p class="card-text text-center text-secondary mb-3" style="font-size: 0.95rem;">
+      ${book.descripcion}
+    </p>
+
+    <!-- Precio -->
+    <h5 class="card-text text-center text-success fw-bold mb-0 fs-5">
+      &cent;${book.precio}
+    </h5>
+        <div class="input-group mb-3 mt-8">
             <span class="input-group-text">Cantidad</span>
             <input type="number" class="form-control libro-quantity" value="1" min="1">
           </div>
@@ -117,27 +133,23 @@ setTimeout(() => {
 }
 
 function displayCategorias() {
-  const select = document.getElementById("filter");
-  const categories = new Set();
+    const select = document.getElementById("filter");
+    const categories = new Set();
 
-  tecnology.forEach(item => {
-      categories.add(item.categoria);
-  });
+    tecnology.forEach(item => categories.add(item.categoria));
 
-  // Limpiar antes de añadir
-  select.innerHTML = "";
+    // Limpiar antes de añadir
+    select.innerHTML = "";
 
-  const defaultOption = document.createElement("option");
-  defaultOption.value = "all";
-  defaultOption.textContent = "Todas las categorías";
-  select.appendChild(defaultOption);
+    const defaultOption = document.createElement("option");
+    defaultOption.value = "all";
+    defaultOption.textContent = "Todas las categorías";
+    select.appendChild(defaultOption);
 
-  for (const category of categories) {
-      const option = document.createElement("option");
-      option.value = category;
-      option.textContent = category.charAt(0).toUpperCase() + category.slice(1);
-      select.appendChild(option);
-  }
+    for (const category of categories) {
+        const option = document.createElement("option");
+        option.value = category.toLowerCase(); // Normalizamos a minúscula
+        option.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+        select.appendChild(option);
+    }
 }
-
-

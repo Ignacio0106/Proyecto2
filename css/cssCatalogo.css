@@ -30,3 +30,32 @@
   color: black;
   font-size: 1.5rem; /* opcional: agrandar un poco las flechas */
 }
+
+#toast-container {
+    position: fixed !important;
+    bottom: 1rem !important;   /* distancia desde el borde inferior */
+    right: 1rem !important;    /* distancia desde el borde derecho */
+    top: auto !important;      /* asegurar que no se posicione arriba */
+    left: auto !important;
+    z-index: 9999 !important;  /* encima de todo */
+}
+/* Colores de Toastr personalizados */
+.toast-success {
+    background-color: #4CAF50 !important;  /* verde */
+    color: #fff !important;
+}
+
+.toast-info {
+    background-color: #2196F3 !important;  /* azul */
+    color: #fff !important;
+}
+
+.toast-warning {
+    background-color: #FFC107 !important;  /* amarillo */
+    color: #000 !important;
+}
+
+.toast-error {
+    background-color: #F44336 !important;  /* rojo */
+    color: #fff !important;
+}

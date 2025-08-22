@@ -1,59 +1,56 @@
-    .carrusel-img,
-    .carousel-item img {
-      width: 100%;
-      height: 300px;
-      object-fit: contain;
-      display: block;
-      background-color: #ffffff;
-    }
+/* Fade-in de secciones y títulos */
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
 
-    .custom-arrow {
-      color: black !important;
-      font-size: 2rem;
-    }
+/* Zoom-in para elementos destacados */
+.zoom-in {
+  animation: zoomIn 0.8s ease forwards;
+}
 
-    /* Animaciones */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+/* Hover en cards (Productos, Servicios, Destacados) */
+section .bg-white,
+section .dark\:bg-gray-800 {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    @keyframes zoomIn {
-      from {
-        transform: scale(0.9);
-        opacity: 0;
-      }
-      to {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
+section .bg-white:hover,
+section .dark\:bg-gray-800:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
 
-    .fade-in {
-      animation: fadeIn 1s ease forwards;
-    }
+/* Hover en botones y enlaces */
+a:hover,
+button:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
 
-    .zoom-in {
-      animation: zoomIn 0.8s ease forwards;
-    }
+/* Hover en íconos sociales */
+footer .icon {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
 
-    .carousel-caption {
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 1rem;
-      border-radius: 0.5rem;
-      bottom: 15%;
-    }
+footer .icon:hover {
+  transform: scale(1.2) rotate(10deg);
+}
 
-    .carousel-item img {
-      transition: transform 0.5s ease;
-    }
+/* Carrusel: transición suave de imágenes */
+.carousel-item img {
+  transition: transform 0.5s ease, opacity 0.7s ease-in-out;
+}
 
-    .carousel-item:hover img {
-      transform: scale(1.03);
-    }
+.carousel-item:hover img {
+  transform: scale(1.03);
+}
+
+/* Subtítulos y textos */
+h1, h2, p {
+  transition: all 0.5s ease;
+}
+
+h1:hover, h2:hover, p:hover {
+  transform: translateY(-3px);
+  color: #f59e0b; /* color naranja al pasar el cursor */
+}
