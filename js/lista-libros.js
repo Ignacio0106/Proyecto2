@@ -19,7 +19,7 @@ displayCategorias();
       // Mostrar los productos filtrados
       displayProducts(filteredProducts);
   });
-})
+});
 
 function displayBooks(data){
   //Div de lista de libros
