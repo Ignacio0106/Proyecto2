@@ -1,9 +1,7 @@
-document.addEventListener("DOMContentLoaded", () => {
-  // Mostrar todos los productos inicialmente
-  displayProducts(tecnology);
-
-  // Mostrar las categorías en el filtro
-  displayCategorias();
+document.addEventListener("DOMContentLoaded",()=>{
+  //Lista de Libros
+  displayBooks(tecnology)
+displayCategorias();
 
   // Escuchar cambio en el filtro de categorías
   const filterSelect = document.getElementById("filter");
@@ -21,18 +19,20 @@ document.addEventListener("DOMContentLoaded", () => {
       // Mostrar los productos filtrados
       displayProducts(filteredProducts);
   });
-});
+})
 
-function displayProducts(data) {
-  const productList = document.getElementById("product-list");
-  productList.innerHTML = "";
+function displayBooks(data){
+  //Div de lista de libros
+  const bookList=document.getElementById("book-list")
+  //Limpiar el contenido de la lista
+  bookList.innerHTML=""
+  
+  data.forEach(book => {
+     const col=document.createElement("div") 
+     col.className = "col-md-4 mb-4";
 
-  data.forEach(product => {
-    const col = document.createElement("div");
-    col.className = "col-md-4 mb-4";
-
-    const carouselId = `carouselProduct${product.id}`;
-    const images = [product.imagen, product.imagen2].filter(Boolean);
+    const carouselId = `carouselProduct${book.id}`;
+    const images = [book.imagen, book.imagen2].filter(Boolean);
 
     // No se generan indicadores para no mostrar números
 
@@ -41,7 +41,7 @@ function displayProducts(data) {
       <div class="carousel-item ${i === 0 ? 'active' : ''}">
         <img src="${src}" class="d-block w-100 img-thumbnail"
           style="max-height: 200px; object-fit: contain;"
-          alt="${product.nombre}"
+          alt="${book.nombre}"
           onerror="this.src='img/image-not-found.jpg';" />
       </div>
     `).join("");
@@ -61,37 +61,59 @@ function displayProducts(data) {
             <span class="visually-hidden">Siguiente</span>
           </button>
         </div>
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title text-center">${product.nombre}</h5>
-          <p class="card-text text-center">${product.descripcion}</p>
-          <h5 class="card-text text-info text-center fw-bold mb-0">&cent;${product.precio}</h5>
-          <div class="input-group my-3">
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title text-center libro-name">${book.nombre}</h5>
+        <p class="card-text text-center">${book.descripcion}</p>
+        <h5 class="card-text text-info text-center fw-bold mb-0 libro-year">&cent;${book.precio}</h5>
+        <div class="input-group mb-3">
             <span class="input-group-text">Cantidad</span>
-            <input type="number" class="form-control" value="1" min="1">
+            <input type="number" class="form-control libro-quantity" value="1" min="1">
           </div>
-          <div class="mt-auto d-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn btn-success" onclick="comprarProducto(${product.id})">
-              <i class="bi bi-cart-plus"></i>
-            </button>
-            <button class="btn btn-primary" onclick="detalleProducto(${product.id})">
+        <div class="mt-auto d-grid gap-2 d-md-flex justify-content-md-end">
+          <button class="btn btn-success" onclick="comprarLibro(${book.id})">
+            <i class="bi bi-cart-plus"></i>
+          </button>
+          <button class="btn btn-primary" onclick="detalleProducto(${book.id})">
               <i class="bi bi-three-dots"></i>
             </button>
-          </div>
         </div>
       </div>
-    `;
-
-    productList.appendChild(col);
+    </div>`
+      bookList.appendChild(col)
   });
 }
 
+/*
+highlight: resalta el fondo brevemente.
+pulsate: hace parpadear el elemento.
+shake: sacude el elemento.
+scale: agranda o reduce temporalmente.
+*/
 
 function detalleProducto(id) {
   window.location.href = `detalle-producto.html?id=${id}`;
 }
 
-function comprarProducto(id) {
-  alert("Producto agregado al carrito: " + id);
+function comprarLibro(element) {
+addToCart(element);
+const $card = $(`.libro-item button[onclick="comprarLibro(${element})"]`).closest(".libro-item")
+const $title = $card.find('.libro-name');
+
+console.log("Producto: ",$title)
+/*   $card.animate({
+  color: "white",
+  backgroundColor: "rgba(190, 190, 190, 1)"
+}); */
+//$card.toggle( "bounce", { times: 2 }, "slow" );
+//$card.toggle( "blind" );
+//$card.toggle( "clip" );
+
+// Ocultar el título con efecto drop
+$title.toggle("drop", { direction: "up" }, 500);
+// Volver a mostrar el título después de 1.2 segundos
+setTimeout(() => {
+  $title.show("drop", { direction: "down" }, 400);
+}, 1200);
 }
 
 function displayCategorias() {
@@ -117,3 +139,5 @@ function displayCategorias() {
       select.appendChild(option);
   }
 }
+
+

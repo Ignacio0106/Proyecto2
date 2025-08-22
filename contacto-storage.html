@@ -2,78 +2,97 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Librería</title>
-  <!-- Bootstrap CSS-->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo Tecnológico</title>
     <link rel="stylesheet" href="./css/bootstrap-lux.min.css" id="theme-link"/>
         <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="./css/cssCatalogo.css" />
   <link rel="stylesheet" href="./css/modoOscuro.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
-      <header>
-    <!-- Barra navegación -->
-    <nav id="navbar" class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.html"><img id="LogoImagen" width="400" src="img/LogoReal.jpg" alt=""></a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="catalogo-libros.html">Catálogo</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contacto-storage.html">Contacto</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Compras
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="factura-libros.html">Facturar</a></li>
-              </ul>
-            </li>
-             <li class="nav-item">
-              <a class="nav-link" href="acercaDe.html">Acerca de</a>
-            </li>
-            <li class="nav-item me-3">
-              <a class="btn btn-light position-relative" href="compra.html" id="cartBtn">
-                <i class="bi bi-cart-fill"></i>
-                <span
-                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                >
-                  0
-                  <span class="visually-hidden">productos en el carrito</span>
-                </span>
-              </a>
-            </li>
-            
-             <li class="nav-item">
-              <button id="btnToggleDark" class="btn btn-outline-light bi bi-moon"></button>
-            </li>
-          </ul>
+<header>
+<nav id="navbar" class="bg-[#385a7f] dark:bg-[#303030] text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-[159px]">
+        
+        <!-- Logo -->
+        <a href="index.html" class="flex-shrink-0">
+          <img id="LogoImagen" src="img/LogoReal.jpg" alt="Logo" class="w-[400px]">
+        </a>
+
+        <!-- Botón móvil -->
+        <div class="flex md:hidden">
+          <button id="menuBtn" class="text-white focus:outline-none">
+            <!-- ejemplo usando Heroicon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Links escritorio -->
+        <div class="hidden md:flex space-x-6 items-center">
+          <a href="catalogo-libros.html" class="hover:text-gray-200">Catálogo</a>
+          <a href="contacto-storage.html" class="hover:text-gray-200">Contacto</a>
+
+          <!-- Dropdown -->
+          <div class="relative group">
+            <button class="hover:text-gray-200 flex items-center">
+              Compras 
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <ul
+              class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow-md w-40"
+            >
+              <li>
+                <a href="factura-libros.html" class="block px-4 py-2 hover:bg-gray-100">
+                  Facturar
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <a href="acercaDe.html" class="hover:text-gray-200">Acerca de</a>
+
+          <!-- Carrito -->
+          <a href="compra.html" id="cartBtn" class="relative bg-white text-[#303030] px-3 py-1 rounded-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.293 2.293a1 1 0 00.707 1.707H17a1 1 0 001-1v-1M7 13h10" />
+            </svg>
+            <span
+              class="absolute -top-2 -right-2 bg-red-600 text-white text-xs px-2 py-0.5 rounded-full"
+            >0</span>
+          </a>
+
+          <!-- Dark Mode -->
+          <button id="btnToggleDark" class="border border-white px-2 py-1 rounded-lg">
+            🌙
+          </button>
         </div>
       </div>
-    </nav>
-  </header>
+    </div>
+
+    <!-- Links móvil -->
+    <div id="mobileMenu" class="hidden md:hidden px-4 pb-4 space-y-2 bg-[#202020]">
+      <a href="catalogo-libros.html" class="block hover:text-gray-200">Catálogo</a>
+      <a href="contacto-storage.html" class="block hover:text-gray-200">Contacto</a>
+      <a href="factura-libros.html" class="block hover:text-gray-200">Facturar</a>
+      <a href="acercaDe.html" class="block hover:text-gray-200">Acerca de</a>
+    </div>
+  </nav>
+</header>
 
   <main class="container-fluid p-4">
     <form id="contactForm" method="post" class="row gy-2 gx-3 align-items-center">
