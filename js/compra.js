@@ -1,42 +1,51 @@
+// Funciones de carrito
+function saveCart(cartArray) {
+    localStorage.setItem("compra", JSON.stringify(cartArray));
+    console.log("Carrito guardado: ", cartArray);
+}
 
-function saveCart(cartArray){
-    localStorage.setItem("compra",JSON.stringify(cartArray))
-    console.log("Carrito guardo: ", cartArray)
+function getCart() {
+    const cart = localStorage.getItem("compra");
+    return cart ? JSON.parse(cart) : [];
 }
-function getCart(){
-    const cart=localStorage.getItem("compra")
-    return cart ? JSON.parse(cart) : []
-}
-function addToCart(idLibro){
-    //Obtener libro completo
-    const book=tecnology.find((b)=> b.id == idLibro)
-    //Objeto a guardar
-    const carItem={
+
+function addToCart(idLibro) {
+    // Obtener libro completo
+    const book = tecnology.find(b => b.id == idLibro);
+    if (!book) return;
+
+    // Objeto a guardar
+    const cartItem = {
         id: book.id,
         name: book.nombre,
         price: book.precio,
-        quantity: 1,
-    } 
-    let cartArray= getCart()
-    //Buscar si el item existe en el carrito
-    const indexItem=cartArray.findIndex((libro)=>libro.id === idLibro)
+        quantity: 1
+    };
 
-     if(indexItem !== -1){
-        //Item existente
-        cartArray[indexItem].quantity+=1
-        toastr.info(`Cantidad de "${carItem.name}" actualiza a ${carItem.quantity}`,
-            'Carrito Actualizado')
-    }else{
-        //Si el item no existe, lo agrega al carrito
-        cartArray.push(carItem)
+    let cartArray = getCart();
+
+    // Verificar si ya existe
+    const indexItem = cartArray.findIndex(item => item.id === idLibro);
+
+    if (indexItem !== -1) {
+        cartArray[indexItem].quantity += 1;
+
+        toastr.info(
+            `Cantidad de "${cartArray[indexItem].name}" actualizada a ${cartArray[indexItem].quantity}`,
+            'Carrito Actualizado'
+        );
+    } else {
+        cartArray.push(cartItem);
+
         toastr.success(
-            `"${carItem.name}" agregado al carrito`,
+            `"${cartItem.name}" agregado al carrito`,
             'Producto Agregado'
-        )
+        );
     }
-    
-    saveCart(cartArray)
+
+    saveCart(cartArray);
 }
+
 toastr.options = {
     "closeButton": true,
     "debug": false,

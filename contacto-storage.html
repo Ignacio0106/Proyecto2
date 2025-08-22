@@ -14,84 +14,201 @@
 </head>
 
 <body>
-<header>
-<nav id="navbar" class="bg-[#385a7f] dark:bg-[#303030] text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-[159px]">
-        
-        <!-- Logo -->
-        <a href="index.html" class="flex-shrink-0">
-          <img id="LogoImagen" src="img/LogoReal.jpg" alt="Logo" class="w-[400px]">
-        </a>
+<header id="mainHeader">
+    <nav class="bg-primary shadow-lg" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="flex items-center group">
+                        <!-- Brand name -->
+                        <div class="flex flex-col">
+                            <span class="text-2xl font-bold text-warning hover:text-secondary transition-all duration-300 tracking-wide group-hover:tracking-wider">
+                                Tech<span class="text-secondary group-hover:text-warning transition-colors duration-300">Zone</span>
+                            </span>
+                            <span class="text-xs text-gray-400 group-hover:text-gray-300 transition-colors duration-300 -mt-1 opacity-75">
+                                Tecnología & Innovación
+                            </span>
+                        </div>
+                        
+                        <!-- Animated underline -->
+                        <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-warning to-orange-500 group-hover:w-full transition-all duration-500 ease-out"></div>
+                    </a>
+                </div>
 
-        <!-- Botón móvil -->
-        <div class="flex md:hidden">
-          <button id="menuBtn" class="text-white focus:outline-none">
-            <!-- ejemplo usando Heroicon -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
-              viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="catalogo-libros.html" 
+                             class="text-secondary hover:text-warning px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                            Catálogo
+                        </a>
+                        <a href="contacto-storage.html" 
+                             class="text-secondary hover:text-warning px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                            Contacto
+                        </a>
+                        
+                        <!-- Dropdown Compras -->
+                        <div class="relative group">
+                            <button id="dropdownNavbarLink" 
+                                            class="text-secondary hover:text-warning px-3 py-2 rounded-md text-sm font-medium flex items-center transition-colors duration-200">
+                                Compras
+                                <svg class="w-4 h-4 ml-1 transition-transform duration-200 group-hover:rotate-180" 
+                                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </button>
+                            <div id="dropdownNavbar" 
+                                     class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-150">
+                                    Facturar
+                                </a>
+                            </div>
+                        </div>
+
+                        <a href="acercaDe.html" 
+                             class="text-secondary hover:text-warning px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                            Acerca de
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Desktop Actions -->
+                <div class="hidden md:flex items-center space-x-3">
+                    <!-- Cart Button -->
+                    <a href="compra.html" 
+                         class="relative bg-gray-600 hover:bg-gray-500 text-secondary p-2 rounded-lg transition-all duration-200 group">
+
+<svg xmlns="http://www.w3.org/2000/svg" 
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" 
+                                 stroke-linecap="round" stroke-linejoin="round" 
+                                 class="w-5 h-5 group-hover:text-warning transition-colors duration-200">
+                            <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                            <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                            <path d="M17 17h-11v-14h-2" />
+                            <path d="M6 5l14 1l-1 7h-13" />
+                        </svg>
+                        <span class="absolute -top-2 -right-2 bg-danger text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                            0
+                        </span>
+                    </a>
+
+                    <!-- Theme Toggle -->
+                    <button id="btnTemaCompu" 
+                                    class="bg-gray-600 hover:bg-gray-500 text-secondary p-2 rounded-lg transition-all duration-200 group">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" 
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+                                 stroke-linejoin="round" class="group-hover:text-warning transition-colors duration-200">
+                            <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+                            <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center space-x-2">
+                    <!-- Mobile Cart -->
+                    <a href="compra.html" 
+                         class="relative bg-gray-600 hover:bg-gray-500 text-secondary p-2 rounded-lg transition-all duration-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" 
+                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+                                 stroke-linejoin="round" class="w-5 h-5">
+                            <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                            <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                            <path d="M17 17h-11v-14h-2" />
+                            <path d="M6 5l14 1l-1 7h-13" />
+                        </svg>
+                        <span class="absolute -top-2 -right-2 bg-danger text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                            0
+                        </span>
+                    </a>
+
+                    <!-- Mobile Theme Toggle -->
+                    <button id="btnTemaCel" 
+                                    class="bg-gray-600 hover:bg-gray-500 text-secondary p-2 rounded-lg transition-all duration-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" 
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+                                 stroke-linejoin="round">
+                            <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+                            <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
+                        </svg>
+                    </button>
+
+                    <!-- Hamburger Menu -->
+                    <button id="menu-toggle" 
+                                    class="text-secondary hover:text-warning p-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-warning">
+                        <span class="sr-only">Abrir menú principal</span>
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile menu -->
+            <div id="menu" class="md:hidden hidden transition-transform duration-500 ease-in-out">
+                <div class="px-2 pt-2 pb-3 space-y-1 bg-primary border-t border-gray-600">
+                    <a href="catalogo-libros.html" 
+                         class="text-secondary hover:text-warning hover:bg-gray-600 block px-3 py-2 rounded-md text-base font-medium transition-all duration-200">
+                        Catálogo
+                    </a>
+                    <a href="contacto-storage.html" 
+                         class="text-secondary hover:text-warning hover:bg-gray-600 block px-3 py-2 rounded-md text-base font-medium transition-all duration-200">
+                        Contacto
+                    </a>
+                    
+                    <!-- Mobile Dropdown -->
+                    <div class="relative">
+                        <button class="text-secondary hover:text-warning hover:bg-gray-600 w-full text-left px-3 py-2 rounded-md text-base font-medium flex items-center justify-between transition-all duration-200"
+                                        onclick="toggleMobileDropdown()">
+                            Compras
+                            <svg class="w-4 h-4 transition-transform duration-200" id="mobile-dropdown-arrow" 
+                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div id="mobile-dropdown" class="hidden pl-6 space-y-1">
+                            <a href="#" class="text-secondary hover:text-warning hover:bg-gray-600 block px-3 py-2 rounded-md text-sm transition-all duration-200">
+                                Facturar
+                            </a>
+                        </div>
+                    </div>
+
+                    <a href="acercaDe.html" 
+                         class="text-secondary hover:text-warning hover:bg-gray-600 block px-3 py-2 rounded-md text-base font-medium transition-all duration-200">
+                        Acerca de
+                    </a>
+                </div>
+            </div>
         </div>
+    </nav>
 
-        <!-- Links escritorio -->
-        <div class="hidden md:flex space-x-6 items-center">
-          <a href="catalogo-libros.html" class="hover:text-gray-200">Catálogo</a>
-          <a href="contacto-storage.html" class="hover:text-gray-200">Contacto</a>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('hidden');
+        });
 
-          <!-- Dropdown -->
-          <div class="relative group">
-            <button class="hover:text-gray-200 flex items-center">
-              Compras 
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none"
-                viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            <ul
-              class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow-md w-40"
-            >
-              <li>
-                <a href="factura-libros.html" class="block px-4 py-2 hover:bg-gray-100">
-                  Facturar
-                </a>
-              </li>
-            </ul>
-          </div>
+        // Mobile dropdown toggle
+        function toggleMobileDropdown() {
+            const dropdown = document.getElementById('mobile-dropdown');
+            const arrow = document.getElementById('mobile-dropdown-arrow');
+            dropdown.classList.toggle('hidden');
+            arrow.classList.toggle('rotate-180');
+        }
 
-          <a href="acercaDe.html" class="hover:text-gray-200">Acerca de</a>
-
-          <!-- Carrito -->
-          <a href="compra.html" id="cartBtn" class="relative bg-white text-[#303030] px-3 py-1 rounded-lg">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" fill="none"
-              viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.293 2.293a1 1 0 00.707 1.707H17a1 1 0 001-1v-1M7 13h10" />
-            </svg>
-            <span
-              class="absolute -top-2 -right-2 bg-red-600 text-white text-xs px-2 py-0.5 rounded-full"
-            >0</span>
-          </a>
-
-          <!-- Dark Mode -->
-          <button id="btnToggleDark" class="border border-white px-2 py-1 rounded-lg">
-            🌙
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Links móvil -->
-    <div id="mobileMenu" class="hidden md:hidden px-4 pb-4 space-y-2 bg-[#202020]">
-      <a href="catalogo-libros.html" class="block hover:text-gray-200">Catálogo</a>
-      <a href="contacto-storage.html" class="block hover:text-gray-200">Contacto</a>
-      <a href="factura-libros.html" class="block hover:text-gray-200">Facturar</a>
-      <a href="acercaDe.html" class="block hover:text-gray-200">Acerca de</a>
-    </div>
-  </nav>
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('menu');
+            const toggle = document.getElementById('menu-toggle');
+            
+            if (!menu.contains(event.target) && !toggle.contains(event.target)) {
+                menu.classList.add('hidden');
+                toggle.classList.add('hidden');
+            }
+        });
+    </script>
 </header>
 
   <main class="container-fluid p-4">
@@ -143,61 +260,41 @@
   </main>
 
   <!-- Footer -->
-<footer class="pie-pagina">
-<div class="grupo-1">
-        <div class="box">
-          <h2>Sobre Nosotros</h2>
-          <p>Productos y servicios tecnológicos a tu alcance</p>
-        </div>
-        <div class="box">
-          <h2>Siguenos</h2>
-          <div class="box-redes">
-        <!-- From Uiverse.io by david-mohseni --> 
-<ul class="wrapper">
-  <li class="icon facebook">
-    <span class="tooltip">Facebook</span>
-    <svg
-      viewBox="0 0 320 512"
-      height="1.2em"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"
-      ></path>
-    </svg>
-  </li>
-  <li class="icon whatsapp">
-    <span class="tooltip">Whatsapp</span>
-    <svg
-      height="1.6em"
-      viewBox="0 0 16 18"
-      xmlns="http://www.w3.org/2000/svg"
-      class="whatsapp"
-    >
-      <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"></path>
-    </svg>
-  </li>
-  <li class="icon instagram">
-    <span class="tooltip">Instagram</span>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      height="1.2em"
-      class="bi bi-instagram"
-      viewBox="0 0 16 16"
-    >
-      <path
-        d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"
-      ></path>
-    </svg>
-  </li>
-</ul>
+  <footer class="bg-primary text-white flex flex-col">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-6">
+      <div class="flex flex-col justify-center items-center text-center">
+        <p class="text-lg font-semibold">Productos y servicios tecnológicos a tu alcance</p>
+      </div>
+      <div class="flex flex-col justify-center items-center">
+        <h2 class="text-lg font-medium mb-4">Siguenos</h2>
+        <ul class="flex gap-8 mt-2">
+          <li class="icon facebook cursor-pointer relative group transition-transform transform hover:scale-125 hover:rotate-12">
+          <svg viewBox="0 0 320 512" class="w-6 h-6 fill-current transition-colors group-hover:text-blue-600" xmlns="http://www.w3.org/2000/svg">
+            <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/>
+          </svg>
+        </li>
+
+        <!-- WhatsApp -->
+        <li class="icon whatsapp cursor-pointer relative group transition-transform transform hover:scale-125 hover:-rotate-12">
+          <svg height="24" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg" class="fill-current transition-colors group-hover:text-green-500">
+            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+          </svg>
+        </li>
+
+        <!-- Instagram -->
+        <li class="icon instagram cursor-pointer relative group transition-transform transform hover:scale-125 hover:rotate-6">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24" class="fill-current transition-colors group-hover:text-pink-500" viewBox="0 0 16 16">
+            <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.
+96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+          </svg>
+        </li>
+        </ul>
       </div>
     </div>
-        </div>
-    <div class="grupo-2">
-      <small class="text-white small mb-0">&copy; 2025 TechZone. Todos los derechos reservados.</small>
+    <div class="m-8 text-center text-sm text-gray-400">
+      <p>&copy; 2025 TechZone. Todos los derechos reservados.</p>
     </div>
-</footer>
+  </footer>
   <!-- Bootstrap JS-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

@@ -44,9 +44,9 @@ function eliminarItem(idLibro){
     let cartArray=getCart()
     if(cartArray.length >0){
         cartArray=cartArray.filter((item)=> item.id !== idLibro)
-        toastr.warning("Libro eliminado","Compra")
+        toastr.warning("Producto eliminado","Compra")
     }else{
-        toastr.info("Seleccione libros a comprar","Compra")
+        toastr.info("Seleccione productos a comprar","Compra")
     }
     saveCart(cartArray)
     showDetail()
@@ -85,7 +85,7 @@ function updateCartItemQty(element) {
       );
     }
   } else {
-    toastr.error("El libro no se encontró en el carrito.", "Error");
+    toastr.error("El producto no se encontró en el carrito.", "Error");
     showDetail();
   }
 }
