@@ -107,7 +107,7 @@ scale: agranda o reduce temporalmente.
 */
 
 function detalleProducto(id) {
-  window.location.href = `detalle-producto.html?id=${id}`;
+  window.location.href = `detalle-producto-servicio.html?id=${id}`;
 }
 
 function comprarLibro(element) {

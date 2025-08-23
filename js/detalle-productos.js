@@ -20,21 +20,18 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("nombre").textContent = product.nombre;
   document.getElementById("descripcion").textContent = product.descripcion;
   document.getElementById("precio").textContent = "₡" + product.precio.toLocaleString();
-  document.getElementById("entrega").textContent = product.tiempoEntrega || "No disponible";
-  document.getElementById("envio").textContent = product.costoEnvio === 0 ? "Gratis" : "₡" + product.costoEnvio;
-
-  // Muestra la categoría con un badge o un texto por defecto si no tiene
-  const categoriaElem = document.getElementById("categoria");
-  categoriaElem.innerHTML = "";
-  if (product.categoria) {
-    const badge = document.createElement("span");
-    badge.className = "badge bg-primary";
-    badge.textContent = product.categoria.charAt(0).toUpperCase() + product.categoria.slice(1);
-    categoriaElem.appendChild(badge);
-  } else {
-    categoriaElem.textContent = "Sin categoría";
+  document.getElementById("tiempoEntrega").textContent = product.tiempoEntrega || "No disponible";
+  document.getElementById("costoEnvio").textContent = product.costoEnvio === 0 ? "Gratis" : "₡" + product.costoEnvio;
+  document.getElementById("categoria").textContent = product.categoria || "Sin categoría";
+  if(!product.disponibledOnline){
+    document.getElementById("estadoDisponibilidadOnline").classList.replace("bg-green-100", "bg-red-100");
+        document.getElementById("estadoDisponibilidadOnline").classList.replace("text-green-700", "text-red-700");
   }
-
+  document.getElementById("estadoDisponibilidadOnline").textContent = product.disponibledOnline ? "Disponible" : "No disponible";
+  if(product.disponibledTienda){
+    document.getElementById("estadoDisponibilidadTienda").classList.replace("bg-red-100 text-red-700", "bg-green-100 text-green-700");
+  }
+  document.getElementById("estadoDisponibilidadTienda").textContent = product.disponibledTienda ? "Disponible" : "No disponible";
   // Crea el carrusel de imágenes para el producto
   const carousel = document.getElementById("imagenesCarousel");
   carousel.innerHTML = "";
