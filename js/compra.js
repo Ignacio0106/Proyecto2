@@ -19,7 +19,8 @@ function addToCart(idLibro) {
         id: book.id,
         name: book.nombre,
         price: book.precio,
-        quantity: 1
+        quantity: 1,
+        costoEnvio: book.costoEnvio,
     };
 
     let cartArray = getCart();

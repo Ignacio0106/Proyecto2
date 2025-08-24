@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle</title>
+    <link rel="stylesheet" href="src/output.css">
+</head>
+<body>
+    <!-- Barra navegación -->
+<header>
+    <nav class="bg-primary shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="flex items-center group">
+                        <!-- Brand name -->
+                        <div class="flex flex-col">
+                            <span class="text-2xl font-bold text-warning hover:text-secondary transition-all duration-300 tracking-wide group-hover:tracking-wider">
+                                Tech<span class="text-secondary group-hover:text-warning transition-colors duration-300">Zone</span>
+                            </span>
+                            <span class="text-xs text-gray-400 group-hover:text-gray-300 transition-colors duration-300 -mt-1 opacity-75">
+                                Tecnología & Innovación
+                            </span>
+                        </div>
+                        
+                        <!-- Animated underline -->
+                        <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-warning to-orange-500 group-hover:w-full transition-all duration-500 ease-out"></div>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="catalogo-libros.html" 
+                             class="text-secondary hover:text-warning px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                            Catálogo
+                        </a>
+                        <a href="contacto-storage.html" 
+                             class="text-secondary hover:text-warning px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                            Contacto
+                        </a>
+                        
+                        <!-- Dropdown Compras -->
+                        <div class="relative group">
+                            <button id="dropdownNavbarLink" 
+                                            class="text-secondary hover:text-warning px-3 py-2 rounded-md text-sm font-medium flex items-center transition-colors duration-200">
+                                Compras
+                                <svg class="w-4 h-4 ml-1 transition-transform duration-200 group-hover:rotate-180" 
+                                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </button>
+                            <div id="dropdownNavbar" 
+                                     class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-150">
+                                    Facturar
+                                </a>
+                            </div>
+                        </div>
+
+                        <a href="acercaDe.html" 
+                             class="text-secondary hover:text-warning px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                            Acerca de
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Desktop Actions -->
+                <div class="hidden md:flex items-center space-x-3">
+                    <!-- Cart Button -->
+                    <a href="compra.html" 
+                         class="relative bg-gray-600 hover:bg-gray-500 text-secondary p-2 rounded-lg transition-all duration-200 group">
+                        <svg xmlns="http://www.w3.org/2000/svg" 
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" 
+                                 stroke-linecap="round" stroke-linejoin="round" 
+                                 class="w-5 h-5 group-hover:text-warning transition-colors duration-200">
+                            <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                            <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                            <path d="M17 17h-11v-14h-2" />
+                            <path d="M6 5l14 1l-1 7h-13" />
+                        </svg>
+                        <span class="absolute -top-2 -right-2 bg-danger text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                            0
+                        </span>
+                    </a>
+
+                    <!-- Theme Toggle -->
+                    <button id="btnTemaCompu" 
+                                    class="bg-gray-600 hover:bg-gray-500 text-secondary p-2 rounded-lg transition-all duration-200 group">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" 
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+                                 stroke-linejoin="round" class="group-hover:text-warning transition-colors duration-200">
+                            <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+                            <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center space-x-2">
+                    <!-- Mobile Cart -->
+                    <a href="compra.html" 
+                         class="relative bg-gray-600 hover:bg-gray-500 text-secondary p-2 rounded-lg transition-all duration-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" 
+                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+                                 stroke-linejoin="round" class="w-5 h-5">
+                            <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                            <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                            <path d="M17 17h-11v-14h-2" />
+                            <path d="M6 5l14 1l-1 7h-13" />
+                        </svg>
+                        <span class="absolute -top-2 -right-2 bg-danger text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                            0
+                        </span>
+                    </a>
+
+                    <!-- Mobile Theme Toggle -->
+                    <button id="btnTemaCel" 
+                                    class="bg-gray-600 hover:bg-gray-500 text-secondary p-2 rounded-lg transition-all duration-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" 
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+                                 stroke-linejoin="round">
+                            <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+                            <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
+                        </svg>
+                    </button>
+
+                    <!-- Hamburger Menu -->
+                    <button id="menu-toggle" 
+                                    class="text-secondary hover:text-warning p-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-warning">
+                        <span class="sr-only">Abrir menú principal</span>
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile menu -->
+            <div id="menu" class="md:hidden hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 bg-primary border-t border-gray-600">
+                    <a href="catalogo-libros.html" 
+                         class="text-secondary hover:text-warning hover:bg-gray-600 block px-3 py-2 rounded-md text-base font-medium transition-all duration-200">
+                        Catálogo
+                    </a>
+                    <a href="contacto-storage.html" 
+                         class="text-secondary hover:text-warning hover:bg-gray-600 block px-3 py-2 rounded-md text-base font-medium transition-all duration-200">
+                        Contacto
+                    </a>
+                    
+                    <!-- Mobile Dropdown -->
+                    <div class="relative">
+                        <button class="text-secondary hover:text-warning hover:bg-gray-600 w-full text-left px-3 py-2 rounded-md text-base font-medium flex items-center justify-between transition-all duration-200"
+                                        onclick="toggleMobileDropdown()">
+                            Compras
+                            <svg class="w-4 h-4 transition-transform duration-200" id="mobile-dropdown-arrow" 
+                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div id="mobile-dropdown" class="hidden pl-6 space-y-1">
+                            <a href="#" class="text-secondary hover:text-warning hover:bg-gray-600 block px-3 py-2 rounded-md text-sm transition-all duration-200">
+                                Facturar
+                            </a>
+                        </div>
+                    </div>
+
+                    <a href="acercaDe.html" 
+                         class="text-secondary hover:text-warning hover:bg-gray-600 block px-3 py-2 rounded-md text-base font-medium transition-all duration-200">
+                        Acerca de
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Mobile dropdown toggle
+        function toggleMobileDropdown() {
+            const dropdown = document.getElementById('mobile-dropdown');
+            const arrow = document.getElementById('mobile-dropdown-arrow');
+            dropdown.classList.toggle('hidden');
+            arrow.classList.toggle('rotate-180');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('menu');
+            const toggle = document.getElementById('menu-toggle');
+            
+            if (!menu.contains(event.target) && !toggle.contains(event.target)) {
+                menu.classList.add('hidden');
+            }
+        });
+    </script>
+</header>
+  <main class="flex flex-col">
+    <section class="m-6">
+        <div class="flex items-center">
+            <a class="text-gray-600" href="catalogo-libros.html">Catálogo</a>
+            <svg class="w-4 h-4 text-gray-400 mx-2" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+            <span id="categoria" class="text-gray-800 font-medium truncate max-w-xs sm:max-w-none">nombreProducto</span>
+        </div>
+        <h2 class="text-2xl md:text-4xl font-bold mt-1" id="nombre">Título del Producto</h2>
+        <section class="overflow-hidden">
+            <div class="relative w-full max-w-3xl mx-auto">
+                <div id="carousel-inner" class="flex transition-transform duration-700 ease-in-out">
+                    <div class="w-full flex-shrink-0 relative">
+                        <img id="imagen" src="image.png" class="w-full h-56 md:h-96 object-cover" alt="...">
+                    </div>
+                    <div class="w-full flex-shrink-0 relative">
+                        <img id="imagen2" src="image.png" class="w-full h-56 md:h-96 object-cover" alt="...">
+                    </div>
+                </div>
+                <button id="prevBtn" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none">
+                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-square-rounded-arrow-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 8l-4 4l4 4" /><path d="M16 12h-8" /><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z" /></svg>
+                    </span>
+                </button>
+                <button id="nextBtn" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none">
+                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-square-rounded-arrow-right"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 16l4 -4l-4 -4" /><path d="M8 12h8" /><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z" /></svg>
+                    </span>
+                </button>
+            </div>
+        </section>
+        <div class="flex justify-between items-center">
+            <div class="flex flex-col">
+                <span class="text-sm text-gray-500 uppercase tracking-wide font-medium mb-1">Precio</span>
+                <p id="precio" class="text-3xl lg:text-4xl font-bold text-gray-900">$1,299.00</p>
+            </div>
+        <div id="disponibilidadProducto" class="m-6 flex items-center gap-2">
+            <span class="font-semibold">Disponibilidad:</span>
+            <div class="flex items-center gap-2">
+                <span class="text-sm text-gray-500 uppercase tracking-wide font-medium">Online:</span>
+                <span class="px-3 py-1 rounded-full bg-green-100 text-green-700 font-medium" id="estadoDisponibilidad">Disponible</span>
+            </div>
+            <span class="text-gray-300">|</span>
+            <div class="flex items-center gap-2">
+                <span class="text-sm text-gray-500 uppercase tracking-wide font-medium">Tienda:</span>
+                <span class="px-3 py-1 rounded-full bg-green-100 text-green-700 font-medium" id="estadoDisponibilidad">Disponible</span>
+            </div>
+        </div>
+        </div>
+        <div class="mx-6 bg-white rounded-xl shadow-lg overflow-hidden">
+    <!-- Tabs Navigation -->
+    <div class="border-b border-gray-200 flex">
+        <button class="flex-1 px-6 py-4 text-sm font-medium text-center border-b-2 transition-all duration-200  focus:ring-2 focus:ring-blue-500 focus:ring-inset rounded-tl-xl cursor-pointer hover:bg-gray-200" id="btn_Descripcion">
+            Descripción
+        </button>
+        <span class="border border-black"></span>
+        <button class="flex-1 px-6 py-4 text-sm font-medium text-center border-b-2 transition-all duration-200  focus:ring-2 focus:ring-blue-500 focus:ring-inset rounded-tr-xl cursor-pointer hover:bg-gray-200" id="btn_Envio">
+            Envío y Entrega
+        </button>
+    </div>
+    <div class="rounded-lg p-4">
+        <!-- Descripción Panel -->
+        <div 
+            class="p-6 transition-all duration-300"
+            id="descripcion-panel"
+        >
+            <div class="prose max-w-none">
+                <h3 class="text-lg font-semibold mb-4 text-gray-800 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Descripción del producto
+                </h3>
+                
+                <div id="productDescription" class="text-gray-700 leading-relaxed space-y-3">
+                    <p id="descripcion">Este producto tecnológico de última generación ha sido diseñado pensando en las necesidades del usuario moderno. Con características innovadoras y un diseño elegante, representa la perfecta combinación entre funcionalidad y estilo.</p>
+
+ <!--                    <div class="bg-blue-50 rounded-lg p-4 border-l-4 border-blue-500">
+                        <h4 class="font-semibold text-blue-800 mb-2">Características principales:</h4>
+                        <ul class="list-disc list-inside text-blue-700 space-y-1">
+                            <li>Tecnología de vanguardia</li>
+                            <li>Diseño ergonómico y moderno</li>
+                            <li>Garantía extendida incluida</li>
+                            <li>Soporte técnico especializado</li>
+                        </ul>
+                    </div>
+                    
+                    <p class="text-sm text-gray-600 italic">
+                        ⭐ Producto recomendado por más del 95% de nuestros clientes
+                    </p> -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Envío Panel -->
+        <div 
+            class="p-6 transition-all duration-300 hidden"
+            id="envio-panel"
+        >
+            <div class="space-y-6">
+                <!-- Tiempos de entrega -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-gray-800 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        Tiempos estimados de entrega
+                    </h3>
+                    
+                    <div class="grid gap-3">
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200">
+                            <div class="flex items-center gap-3">
+                                <div>
+                                    <p id="tiempoEntrega" class="font-medium text-gray-800">3 dias</p>
+                                    <p id="costoEnvio" class="font-medium text-gray-800">4000</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- <div class="flex items-center justify-between p-3 bg-yellow-50 rounded-lg border border-yellow-200">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-800">Envío express</p>
+                                    <p class="text-sm text-gray-600">Entrega rápida</p>
+                                </div>
+                            </div>
+                            <span class="font-semibold text-gray-700">1-2 días hábiles</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg border border-green-200">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-800">Retiro en tienda</p>
+                                    <p class="text-sm text-gray-600">Disponible en 24 horas</p>
+                                </div>
+                            </div>
+                            <span class="font-semibold text-green-700">Gratis</span>
+                        </div>
+                    </div>
+                </div>
+
+              
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-gray-800 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v2a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                        Costos de envío
+                    </h3>
+                    
+                    <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-4 border border-blue-200">
+                        <div class="grid gap-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700">Envío estándar</span>
+                                <span id="costoEnvio" class="font-semibold text-gray-800">$80 MXN</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700">Envío express</span>
+                                <span class="font-semibold text-gray-800">$150 MXN</span>
+                            </div>
+                            <div class="flex justify-between items-center border-t pt-2">
+                                <span class="text-gray-700">Retiro en tienda</span>
+                                <span class="font-semibold text-green-600">Gratis</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 p-3 bg-white rounded-lg border border-blue-200">
+                            <p class="text-sm text-blue-700 flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <strong>Envío gratis</strong> en compras mayores a $999 MXN
+                            </p>
+                        </div>
+                                    <h3 class="text-lg font-semibold mb-2">Tiempos estimados de entrega</h3>
+            <ul class="list-disc pl-6 mb-4">
+                <li><span class="font-medium">Envío estándar:</span> 3-5 días hábiles</li>
+                <li><span class="font-medium">Envío express:</span> 1-2 días hábiles</li>
+                <li><span class="font-medium">Retiro en tienda:</span> Disponible en 24 horas</li>
+            </ul>
+            <h3 class="text-lg font-semibold mb-2">Costos de envío</h3>
+            <ul class="list-disc pl-6">
+                <li><span class="font-medium">Envío estándar:</span> $80 MXN</li>
+                <li><span class="font-medium">Envío express:</span> $150 MXN</li>
+                <li><span class="font-medium">Retiro en tienda:</span> Sin costo</li>
+            </ul>-->
+                    </div> 
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>
+    </section>
+    <section class="m-4 p-2 sm:m-6 mx-auto">
+        <h3 class="text-xl sm:text-2xl font-bold mb-6 text-gray-800">Reseñas de usuarios</h3>
+        <div id="lista-resenas" class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+                <div class="flex-shrink-0">
+                    <span id="inicialU" class="rounded-full bg-gray-200 w-12 h-12 flex items-center justify-center text-gray-500">N</span>
+                </div>
+                <div class="flex-1">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 id="nombreU" class="text-lg font-semibold text-gray-800">Nombre del usuario</h4>
+                        <span id="estrellasU" class="text-yellow-500">★★★★☆</span>
+                    </div>
+                    <p id="resenaU" class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+            </div>
+        </div>
+        
+    <!-- Formulario para nueva reseña -->
+    <div class="bg-white rounded-xl shadow-lg p-6">
+        <h4 class="text-lg font-semibold mb-4 text-gray-800">Comparte tu experiencia</h4>
+        
+        <form id="form-resena" class="flex flex-col gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                    <label for="reviewName" class="block text-sm font-medium text-gray-700 mb-2">Nombre</label>
+                    <input 
+                        type="text" 
+                        id="reviewName" 
+                        name="reviewName" 
+                        required 
+                        class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" 
+                        placeholder="Tu nombre"
+                        maxlength="50"
+                        autocomplete="name"
+                    >
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Calificación</label>
+                    <div id="starRating" class="flex gap-1" role="radiogroup" aria-label="Calificación del producto">
+                        <!-- Estrellas interactivas generadas por JS -->
+                    </div>
+                </div>
+
+                <script>
+                // Script para sistema de calificación por estrellas
+                (function() {
+                    const starRatingContainer = document.getElementById('starRating');
+                    let selectedRating = 0;
+
+                    // Crear las 5 estrellas
+                    function createStars() {
+                        for (let i = 1; i <= 5; i++) {
+                            const star = document.createElement('button');
+                            star.type = 'button';
+                            star.className = 'star-btn w-8 h-8 text-4xl text-gray-300 hover:text-yellow-400 focus:text-yellow-400 focus:outline-none transition-colors duration-200';
+                            star.innerHTML = '★';
+                            star.setAttribute('data-rating', i);
+                            
+                            // Eventos para hover
+                            star.addEventListener('mouseenter', () => highlightStars(i));
+                            star.addEventListener('mouseleave', () => highlightStars(selectedRating));
+                            
+                            // Evento para seleccionar
+                            star.addEventListener('click', () => selectRating(i));
+                            
+                            starRatingContainer.appendChild(star);
+                        }
+                    }
+
+                    // Resaltar estrellas hasta el índice dado
+                    function highlightStars(rating) {
+                        const stars = starRatingContainer.querySelectorAll('.star-btn');
+                        stars.forEach((star, index) => {
+                            if (index < rating) {
+                                star.classList.remove('text-gray-300');
+                                star.classList.add('text-yellow-400');
+                            } else {
+                                star.classList.remove('text-yellow-400');
+                                star.classList.add('text-gray-300');
+                            }
+                        });
+                    }
+
+                    // Seleccionar calificación
+                    function selectRating(rating) {
+                        selectedRating = rating;
+                        const stars = starRatingContainer.querySelectorAll('.star-btn');
+                        
+                        stars.forEach((star, index) => {
+                            console.log(index);
+                            const isSelected = index < rating;
+                            if (isSelected) {
+                                star.classList.remove('text-gray-300');
+                                star.classList.add('text-yellow-500');
+                            } else {
+                                star.classList.remove('text-yellow-500');
+                                star.classList.add('text-gray-300');
+                            }
+                        });
+                    }
+
+                    // Obtener calificación seleccionada (función pública)
+                    window.getSelectedRating = function() {
+                        return selectedRating;
+                    };
+
+                    // Resetear calificación
+                    window.resetStarRating = function() {
+                        selectedRating = 0;
+                        highlightStars(0);
+                        const stars = starRatingContainer.querySelectorAll('.star-btn');
+                        stars.forEach(star => star.setAttribute('aria-checked', 'false'));
+                    };
+
+                    // Inicializar
+                    createStars();
+                })();
+                </script>
+            </div>
+            <div>
+                <label for="reviewText" class="block text-sm font-medium text-gray-700 mb-2">Tu reseña</label>
+                <textarea 
+                    id="reviewText" 
+                    name="reviewText" 
+                    required 
+                    rows="4" 
+                    class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none" 
+                    placeholder="Escribe tu reseña aquí..."
+                    maxlength="500"
+                ></textarea>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                <button id="btnEnviarForm" class="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white px-6 py-3 rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    type="button">
+                    Publicar reseña
+                </button>
+                <button id="btnCancelar" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-3 rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2" type="reset">
+                    Cancelar
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+  </main>
+  <!-- Footer -->
+  <footer class="bg-primary text-secondary flex flex-col">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-6">
+      <div class="flex flex-col justify-center items-center text-center">
+        <p class="text-lg font-semibold">Productos y servicios tecnológicos a tu alcance</p>
+      </div>
+      <div class="flex flex-col justify-center items-center">
+        <h2 class="text-lg font-medium mb-4">Siguenos</h2>
+        <ul class="flex gap-8 mt-2">
+          <li>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
+               class="group flex flex-col items-center transition-transform hover:scale-110">
+              <svg viewBox="0 0 320 512" height="1.5em" xmlns="http://www.w3.org/2000/svg"
+                   class="fill-white group-hover:fill-blue-500 transition-colors duration-200">
+                <path
+                  d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"
+                ></path>
+              </svg>
+              <span class="absolute opacity-0 group-hover:opacity-100 group-hover:-translate-y-10 transition-all duration-300 text-xs mt-2 bg-black text-white px-2 py-1 rounded shadow-lg">
+                Facebook
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="https://wa.me/XXXXXXXXXXX" target="_blank" rel="noopener noreferrer" aria-label="Whatsapp" title="Whatsapp"
+               class="group flex flex-col items-center transition-transform hover:scale-110">
+              <svg height="1.5em" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg"
+                   class="fill-white group-hover:fill-green-500 transition-colors duration-200">
+                <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"></path>
+              </svg>
+              <span class="absolute opacity-0 group-hover:opacity-100 group-hover:-translate-y-10 transition-all duration-300 text-xs mt-2 bg-black text-white px-2 py-1 rounded shadow-lg">
+                Whatsapp
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+               class="group flex flex-col items-center transition-transform hover:scale-110">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid" viewBox="0 0 256 256"
+                   class="fill-white group-hover:fill-pink-500 transition-colors duration-200">
+                <path d="M128 23.064c34.177 0 38.225.13 51.722.745 12.48.57 19.258 2.655 23.769 4.408 5.974 2.322 10.238 5.096 14.717 9.575 4.48 4.479 7.253 8.743 9.575 14.717 1.753 4.511 3.838 11.289 4.408 23.768.615 13.498.745 17.546.745 51.723 0 34.178-.13 38.226-.745 51.723-.57 12.48-2.655 19.257-4.408 23.768-2.322 5.974-5.096 10.239-9.575 14.718-4.479 4.479-8.743 7.253-14.717 9.574-4.511 1.753-11.289 3.839-23.769 4.408-13.495.616-17.543.746-51.722.746-34.18 0-38.228-.13-51.723-.746-12.48-.57-19.257-2.655-23.768-4.408-5.974-2.321-10.239-5.095-14.718-9.574-4.479-4.48-7.253-8.744-9.574-14.718-1.753-4.51-3.839-11.288-4.408-23.768-.616-13.497-.746-17.545-.746-51.723 0-34.177.13-38.225.746-51.722.57-12.48 2.655-19.258 4.408-23.769 2.321-5.974 5.095-10.238 9.574-14.717 4.48-4.48 8.744-7.253 14.718-9.575 4.51-1.753 11.288-3.838 23.768-4.408 13.497-.615 17.545-.745 51.723-.745M128 0C93.237 0 88.878.147 75.226.77c-13.625.622-22.93 2.786-31.071 5.95-8.418 3.271-15.556 7.648-22.672 14.764C14.367 28.6 9.991 35.738 6.72 44.155 3.555 52.297 1.392 61.602.77 75.226.147 88.878 0 93.237 0 128c0 34.763.147 39.122.77 52.774.622 13.625 2.785 22.93 5.95 31.071 3.27 8.417 7.647 15.556 14.763 22.672 7.116 7.116 14.254 11.492 22.672 14.763 8.142 3.165 17.446 5.328 31.07 5.95 13.653.623 18.012.77 52.775.77s39.122-.147 52.774-.77c13.624-.622 22.929-2.785 31.07-5.95 8.418-3.27 15.556-7.647 22.672-14.763 7.116-7.116 11.493-14.254 14.764-22.672 3.164-8.142 5.328-17.446 5.95-31.07.623-13.653.77-18.012.77-52.775s-.147-39.122-.77-52.774c-.622-13.624-2.786-22.929-5.95-31.07-3.271-8.418-7.648-15.556-14.764-22.672C227.4 14.368 220.262 9.99 211.845 6.72c-8.142-3.164-17.447-5.328-31.071-5.95C167.122.147 162.763 0 128 0Zm0 62.27C91.698 62.27 62.27 91.7 62.27 128c0 36.302 29.428 65.73 65.73 65.73 36.301 0 65.73-29.428 65.73-65.73 0-36.301-29.429-65.73-65.73-65.73Zm0 108.397c-23.564 0-42.667-19.103-42.667-42.667S104.436 85.333 128 85.333s42.667 19.103 42.667 42.667-19.103 42.667-42.667 42.667Zm83.686-110.994c0 8.484-6.876 15.36-15.36 15.36-8.483 0-15.36-6.876-15.36-15.36 0-8.483 6.877-15.36 15.36-15.36 8.484 0 15.36 6.877 15.36 15.36Z"/>
+              </svg>
+              <span class="absolute opacity-0 group-hover:opacity-100 group-hover:-translate-y-10 transition-all duration-300 text-xs mt-2 bg-black text-white px-2 py-1 rounded shadow-lg">
+                Instagram
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="flex justify-center align-items-center p-3 border-t-1 border-secondary bg-black">
+      <p class="text-white">&copy; 2025 TechZone. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+  <script>
+    (function () {
+  const inner = document.getElementById('carousel-inner');
+  if (!inner) return;
+  const slides = Array.from(inner.children);
+  const total = slides.length;
+  let index = 0;
+
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const indicators = Array.from(document.querySelectorAll('.carousel-indicator'));
+
+  function go(i) {
+    index = (i + total) % total;
+    inner.style.transform = `translateX(-${index * 100}%)`;
+    indicators.forEach((btn, idx) => {
+      const active = idx === index;
+      btn.classList.toggle('bg-white', active);
+      btn.classList.toggle('bg-white/40', !active);
+      btn.setAttribute('aria-selected', active);
+    });
+  }
+
+  prevBtn?.addEventListener('click', () => go(index - 1));
+  nextBtn?.addEventListener('click', () => go(index + 1));
+  indicators.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = parseInt(btn.dataset.slide, 10);
+      go(target);
+    });
+  });
+
+  // Teclas izquierda/derecha
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') go(index - 1);
+    if (e.key === 'ArrowRight') go(index + 1);
+  });
+
+  go(0);
+})();
+  </script>
+  <script src="js/tema.js"></script>
+  <script>
+        const panelD = document.getElementById('descripcion-panel');
+        const panelE = document.getElementById('envio-panel');
+        function mostrarDescripcion(){
+            panelD.classList.remove('hidden');
+            panelE.classList.add('hidden');
+        }
+        function mostrarEnvio(){
+            panelD.classList.add('hidden');
+            panelE.classList.remove('hidden');
+        }
+        document.getElementById('btn_Descripcion').addEventListener('click', mostrarDescripcion);
+        document.getElementById('btn_Envio').addEventListener('click', mostrarEnvio);
+  </script>
+  <script src="json/ListaProductos.js"></script>
+  <script src="js/detalle-libro.js"></script>
+  <script src="js/resenas.js"></script>
+</body>
+</html>
+

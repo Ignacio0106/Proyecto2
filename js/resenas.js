@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function guardarResena(id) {
     const nombre = document.getElementById("reviewName").value;
     const comentario = document.getElementById("reviewText").value;
-    const calificacion = 4;
+    const calificacion = getSelectedRating();
 
     if (!nombre || !comentario || !calificacion) {
         alert("Por favor, completa todos los campos.");
@@ -30,6 +30,12 @@ function guardarResena(id) {
     localStorage.setItem(`reseñas_${id}`, JSON.stringify(reseñas));
 
     document.getElementById("form-resena").reset();
+    const starRatingContainer = document.getElementById('starRating');
+    const stars = starRatingContainer.querySelectorAll('.star-btn');
+    stars.forEach((star) => {
+        star.classList.remove('text-yellow-400', 'text-yellow-500', 'text-yellow-300');
+        star.classList.add('text-gray-300');
+    });
     mostrarResenas(id);
 }
 
@@ -40,7 +46,7 @@ function mostrarResenas(id) {
 
     reseñas.forEach((resena, index) => {
         const divResena = document.createElement("div");
-        divResena.classList.add("flex", "flex-col", "sm:flex-row", "sm:items-center", "gap-4");
+        divResena.classList.add("flex", "flex-col", "sm:flex-row", "sm:items-start", "gap-4", "p-6", "border", "border-gray-200", "mb-4", "rounded-xl", "shadow-sm", "hover:shadow-md", "transition-shadow", "duration-200", "bg-white");
         divResena.innerHTML = `
                 <div class="flex-shrink-0">
                     <span id="inicialU" class="rounded-full bg-gray-200 w-12 h-12 flex items-center justify-center text-gray-500">${resena.nombre.charAt(0)}</span>

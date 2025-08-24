@@ -12,3 +12,35 @@
     --color-light: #f8f9fa;
     --color-dark: #212529;
 }
+
+@view-transition{
+    navigation: auto;
+}
+
+::view-transition-old(root){
+    animation: slide-out-to-left 0.5s forwards;
+}
+::view-transition-new(root){
+    animation: slide-in-from-right 0.5s forwards;
+}
+
+@keyframes slide-out-to-left {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}
+@keyframes slide-in-from-right {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

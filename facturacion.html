@@ -218,30 +218,7 @@
                 <div class="text-center">Acción</div>
             </div>
             <div id="detail" class="rounded-b-xl mb-6">
-            <div class="grid grid-cols-5 gap-4 p-4 border-b border-gray-500 bg-gray-50 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-600 transition-colors items-center">
-                <div class="text-center">Producto1</div>
-                <div class="text-center">
-                    <input type="number" min="0" value="1" 
-                        class="w-16 text-center border border-gray-300 dark:border-gray-600 rounded-md p-1 dark:bg-gray-700 dark:text-white">
-                </div>
-                <div class="text-center">$199.98</div>
-                <div class="text-center">$399.96</div>
-                <div class="flex justify-center items-center">
-                <button class="flex justify-center items-center text-red-600 hover:bg-red-200 hover:scale-110 transition-transform duration-200 ease-in-out rounded-2xl size-10"><svg xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-trash"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 7l16 0" /><path d="M10 11l0 6" /><path d="M14 11l0 6" /><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" /><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" /></svg></button>
-            </div>
-            </div>
-            <div class="grid grid-cols-5 gap-4 p-4 border-b border-gray-500 bg-gray-50 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-600 transition-colors items-center">
-                <div class="text-center">Producto1</div>
-                <div class="text-center">
-                    <input type="number" min="0" value="1" 
-                        class="w-16 text-center border border-gray-300 dark:border-gray-600 rounded-md p-1 dark:bg-gray-700 dark:text-white">
-                </div>
-                <div class="text-center">$199.98</div>
-                <div class="text-center">$399.96</div>
-                <div class="flex justify-center items-center">
-                <button class="flex justify-center items-center text-red-600 hover:bg-red-200 hover:scale-110 transition-transform duration-200 ease-in-out rounded-2xl size-10"><svg xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-trash"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 7l16 0" /><path d="M10 11l0 6" /><path d="M14 11l0 6" /><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" /><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" /></svg></button>
-            </div>
-            </div>
+            
             </div>
         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-6">
             <h2 class="text-xl font-semibold mb-4 dark:text-white">Método de Envío</h2>
@@ -262,7 +239,7 @@
                         <div class="font-medium dark:text-white">Envío postal</div>
                         <div class="text-sm text-gray-500 dark:text-gray-400">Entrega en 2-5 días hábiles</div>
                     </div>
-                    <div class="font-semibold dark:text-white">$15.00</div>
+                    <div class="font-semibold dark:text-white">₡2 500</div>
                 </label>
             </div>
         </div>
@@ -273,9 +250,9 @@
                     <span id="total-items" class="dark:text-gray-300">Subtotal (3 productos)</span>
                 </div>
                 <div class="flex justify-between">
-                    <span class="dark:text-gray-300">Envío</span>
-                    <span class="font-medium dark:text-gray-300">Gratis</span>
-                </div>
+    <span class="dark:text-gray-300">Envío</span>
+    <span id="resumen-envio" class="font-medium dark:text-gray-300">Gratis</span>
+</div>
                 <hr class="border-gray-200 dark:border-gray-600">
                 <div class="flex justify-between text-lg font-bold">
                     <span class="dark:text-white">Total</span>
@@ -312,16 +289,16 @@
                 
                 <div class="flex flex-wrap px-4 py-3 gap-4">
                     <label class="flex flex-col flex-1">
-                        <p class="text-black dark:text-white font-medium pb-2">Fecha de Caducidad *</p>
-                        <input
-                            id="fechaExpiracion"
-                            type="text"
-                            placeholder="MM/AA"
-                            maxlength="7"
-                            oninput="this.value = this.value.replace(/\D/g, '')"
-                            class="flex w-full overflow-hidden rounded-lg text-black dark:text-white focus:outline-0 focus:ring-2 focus:ring-blue-500 border border-gray-300 dark:border-gray-700 bg-white dark:bg-black/20 h-14 placeholder:text-gray-500 dark:placeholder:text-gray-400 p-3"
-                        />
-                    </label>
+    <p class="text-black dark:text-white font-medium pb-2">Fecha de Caducidad *</p>
+    <input
+    id="fechaExpiracion"
+    type="text"
+    placeholder="MM/AA o MM/AAAA"
+    maxlength="7"
+    class="flex w-full overflow-hidden rounded-lg text-black dark:text-white focus:outline-0 focus:ring-2 focus:ring-blue-500 border border-gray-300 dark:border-gray-700 bg-white dark:bg-black/20 h-14 placeholder:text-gray-500 dark:placeholder:text-gray-400 p-3"
+    oninput="formatearFechaExpiracion(this)"
+/>
+</label>
                     
                     <label class="flex flex-col flex-1">
                         <p class="text-black dark:text-white font-medium pb-2">CVV *</p>
@@ -366,53 +343,7 @@
             <section id="factura" class="hidden">
                 <h1>Poner factura</h1>
             </section>
-            <script>
-                document.getElementById('btnProcederPago').addEventListener('click', function() {
-                  document.getElementById('mediosPago').classList.remove('hidden');
-                  document.getElementById('compra').classList.add('hidden');
-                    // Si todas las validaciones pasan, mostrar el modal de éxito
-                    
-                });
-                document.getElementById('realizarPago').addEventListener('click', function() {
-                    const numeroTarjeta = document.getElementById('numeroTarjeta').value.replace(/\s+/g, '');
-                    const fechaExpiracion = document.getElementById('fechaExpiracion').value;
-                    const cvv = document.getElementById('cvv').value;
-                    const datosTitular = document.getElementById('datosTitular').value.trim();
-
-                    // Validaciones
-                    const numeroTarjetaRegex = /^\d{16}$/;
-                    const fechaExpiracionRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
-                    const cvvRegex = /^\d{3,4}$/;
-                    const nombreTitularRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s'\-]{2,60}$/;
-
-                    if (!numeroTarjetaRegex.test(numeroTarjeta)) {
-                        alert('Por favor, ingrese un número de tarjeta válido de 16 dígitos.');
-                        return;
-                    }
-
-        /*             if (!fechaExpiracionRegex.test(fechaExpiracion)) {
-                        alert('Por favor, ingrese una fecha de expiración válida en formato MM/AA.');
-                        return;
-                    } */
-
-                    if (!cvvRegex.test(cvv)) {
-                        alert('Por favor, ingrese un CVV válido de 3 o 4 dígitos.');
-                        return;
-                    }
-
-                    if (!nombreTitularRegex.test(datosTitular)) {
-                        alert('Por favor, ingrese un nombre del titular válido (solo letras y espacios, entre 2 y 60 caracteres).');
-                        return;
-                    }
-                    toastr.info("Gracias por contactarnos",
-                    'Información Enviada')
-                  document.getElementById('paymentForm').reset();
-                  document.getElementById('factura').classList.remove('hidden');
-                  document.getElementById('mediosPago').classList.add('hidden');
-                    // Si todas las validaciones pasan, mostrar el modal de éxito
-                    
-                });
-        </script>
+            
      
 </main>
   <!-- Footer -->
@@ -463,6 +394,7 @@
   <!-- Carrito de compras -->
   <script src="./js/compra.js"></script>
   <script src="./js/facturacion.js"></script>
+  <script src="./js/detalle-compra.js"></script>
 </body>
 
 </html>

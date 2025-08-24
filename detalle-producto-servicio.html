@@ -217,10 +217,10 @@
             <div class="relative w-full max-w-3xl mx-auto">
                 <div id="carousel-inner" class="flex transition-transform duration-700 ease-in-out">
                     <div class="w-full flex-shrink-0 relative">
-                        <img id="imagen" src="image.png" class="w-full h-56 md:h-96 object-cover" alt="...">
+                        <img id="imagen" src="image.png" class="w-full h-40 md:h-96 object-cover" alt="...">
                     </div>
                     <div class="w-full flex-shrink-0 relative">
-                        <img id="imagen2" src="image.png" class="w-full h-56 md:h-96 object-cover" alt="...">
+                        <img id="imagen2" src="image.png" class="w-full h-40 md:h-96 object-cover" alt="...">
                     </div>
                 </div>
                 <button id="prevBtn" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none">
@@ -326,7 +326,7 @@
     <div class="bg-white rounded-xl shadow-lg p-6">
         <h4 class="text-lg font-semibold mb-4 text-gray-800">Comparte tu experiencia</h4>
         
-        <form id="formResena" class="flex flex-col gap-4">
+        <form id="form-resena" class="flex flex-col gap-4">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                     <label for="reviewName" class="block text-sm font-medium text-gray-700 mb-2">Nombre</label>
@@ -395,7 +395,6 @@
                         const stars = starRatingContainer.querySelectorAll('.star-btn');
                         
                         stars.forEach((star, index) => {
-                            console.log(index);
                             const isSelected = index < rating;
                             if (isSelected) {
                                 star.classList.remove('text-gray-300');
@@ -529,20 +528,7 @@
   go(0);
 })();
   </script>
-  <script>
-        const panelD = document.getElementById('descripcion-panel');
-        const panelE = document.getElementById('envio-panel');
-        function mostrarDescripcion(){
-            panelD.classList.remove('hidden');
-            panelE.classList.add('hidden');
-        }
-        function mostrarEnvio(){
-            panelD.classList.add('hidden');
-            panelE.classList.remove('hidden');
-        }
-        document.getElementById('btn_Descripcion').addEventListener('click', mostrarDescripcion);
-        document.getElementById('btn_Envio').addEventListener('click', mostrarEnvio);
-  </script>
+
   <script src="json/productos-TechZone.js"></script>
     <script src="./js/detalle-productos.js"></script>
   <script src="js/resenas.js"></script>

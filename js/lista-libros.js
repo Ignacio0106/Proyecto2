@@ -34,77 +34,71 @@ function displayBooks(data){
   bookList.innerHTML=""
   
   data.forEach(book => {
-     const col=document.createElement("div") 
-     col.className = "col-md-4 mb-4";
+  const col = document.createElement("div");
+  col.className = "w-full p-3";
 
-    const carouselId = `carouselProduct${book.id}`;
-    const images = [book.imagen, book.imagen2].filter(Boolean);
+  const carouselId = `carouselProduct${book.id}`;
+  const images = [book.imagen, book.imagen2].filter(Boolean);
 
-    // No se generan indicadores para no mostrar números
+  // Construir items del carrusel
+const innerItems = images.map((src, i) => `
+    <div class="carousel-slide ${i === 0 ? 'active' : 'hidden'} transition-opacity duration-500" data-slide="${i}">
+      <img src="${src}" 
+           class="w-full h-48 object-contain rounded-t-xl"
+           alt="${book.nombre}"
+           onerror="this.src='img/image-not-found.jpg';" />
+    </div>
+  `).join("");
 
-    // Construir items del carrusel
-    const innerItems = images.map((src, i) => `
-      <div class="carousel-item ${i === 0 ? 'active' : ''}">
-        <img src="${src}" class="d-block w-100 img-thumbnail"
-          style="max-height: 200px; object-fit: contain;"
-          alt="${book.nombre}"
-          onerror="this.src='img/image-not-found.jpg';" />
-      </div>
-    `).join("");
+  col.innerHTML = `
+    <div class="group bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700 overflow-hidden h-full flex flex-col">
 
-    col.innerHTML = `
-      <div class="card h-100 d-flex flex-column shadow-sm">
-        <div id="${carouselId}" class="carousel slide">
-          <div class="carousel-inner">
-            ${innerItems}
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#${carouselId}" data-bs-slide="prev">
-            <span class="custom-arrow" aria-hidden="true">&#11164;</span>
-            <span class="visually-hidden">Anterior</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#${carouselId}" data-bs-slide="next">
-            <span class="custom-arrow" aria-hidden="true">&#11166;</span>
-            <span class="visually-hidden">Siguiente</span>
-          </button>
-        </div>
-      <div class="card-body d-flex flex-column">
-        <h5 class="card-title text-center libro-name fw-bold fs-4 text-primary mb-2" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.2);">
-      ${book.nombre}
-    </h5>
-
-    <!-- Descripción -->
-    <p class="card-text text-center text-secondary mb-3" style="font-size: 0.95rem;">
-      ${book.descripcion}
-    </p>
-
-    <!-- Precio -->
-    <h5 class="card-text text-center text-success fw-bold mb-0 fs-5">
-      &cent;${book.precio}
-    </h5>
-        <div class="input-group mb-3 mt-8">
-            <span class="input-group-text">Cantidad</span>
-            <input type="number" class="form-control libro-quantity" value="1" min="1">
-          </div>
-        <div class="mt-auto d-grid gap-2 d-md-flex justify-content-md-end">
-          <button class="btn btn-success" onclick="comprarLibro(${book.id})">
-            <i class="bi bi-cart-plus"></i>
-          </button>
-          <button class="btn btn-primary" onclick="detalleProducto(${book.id})">
-              <i class="bi bi-three-dots"></i>
-            </button>
+      <!-- Carrusel de imágenes -->
+      <div id="${carouselId}" class="relative overflow-hidden">
+        <div class="carousel-container relative">
+          ${innerItems}
         </div>
       </div>
-    </div>`
+      
+      <!-- Contenido de la tarjeta -->
+      <div class="p-4 flex flex-col flex-grow">
+        <!-- Título -->
+        <h5 class="text-lg font-bold text-center text-primary dark:text-blue-400 mb-2 group-hover:text-warning transition-colors duration-300 line-clamp-2">
+          ${book.nombre}
+        </h5>
+
+        <!-- Descripción -->
+        <p class="text-gray-600 dark:text-gray-300 text-sm text-center mb-3 line-clamp-3 flex-grow">
+          ${book.descripcion}
+        </p>
+
+        <!-- Precio -->
+        <h5 class="text-xl font-bold text-center text-green-600 dark:text-green-400 mb-4">
+          ¢${book.precio}
+        </h5>
+
+        <!-- Botones de acción -->
+        <div class="flex gap-2 mt-auto">
+          <button class="flex-1 bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 flex items-center justify-center"
+                  onclick="comprarLibro(${book.id})">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 5M7 13l1.5 5m0 0h8"/>
+            </svg>
+          </button>
+          <button class="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                  onclick="detalleProducto(${book.id})">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
       bookList.appendChild(col)
+      
   });
 }
-
-/*
-highlight: resalta el fondo brevemente.
-pulsate: hace parpadear el elemento.
-shake: sacude el elemento.
-scale: agranda o reduce temporalmente.
-*/
 
 function detalleProducto(id) {
   window.location.href = `detalle-producto-servicio.html?id=${id}`;
