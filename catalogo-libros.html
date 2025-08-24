@@ -13,9 +13,9 @@
 </head>
 
 <body class="bg-white dark:bg-gray-900 text-black dark:text-white transition-colors duration-300">
-<!-- Barra navegación -->
-<header id="mainHeader">
-    <nav class="bg-primary shadow-lg" id="navbar">
+    <!-- Barra navegación -->
+<header>
+    <nav class="bg-primary shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
             <div class="flex justify-between items-center h-16">
                 <!-- Logo -->
@@ -60,7 +60,7 @@
                             </button>
                             <div id="dropdownNavbar" 
                                      class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-150">
+                                <a href="facturacion.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-150">
                                     Facturar
                                 </a>
                             </div>
@@ -78,8 +78,7 @@
                     <!-- Cart Button -->
                     <a href="compra.html" 
                          class="relative bg-gray-600 hover:bg-gray-500 text-secondary p-2 rounded-lg transition-all duration-200 group">
-
-<svg xmlns="http://www.w3.org/2000/svg" 
+                        <svg xmlns="http://www.w3.org/2000/svg" 
                                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" 
                                  stroke-linecap="round" stroke-linejoin="round" 
                                  class="w-5 h-5 group-hover:text-warning transition-colors duration-200">
@@ -138,7 +137,7 @@
                     <button id="menu-toggle" 
                                     class="text-secondary hover:text-warning p-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-warning">
                         <span class="sr-only">Abrir menú principal</span>
-<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
                         </svg>
                     </button>
@@ -152,7 +151,7 @@
                          class="text-secondary hover:text-warning hover:bg-gray-600 block px-3 py-2 rounded-md text-base font-medium transition-all duration-200">
                         Catálogo
                     </a>
-                    <a href="contacto-storage.html" 
+                    <a href="contacto.html" 
                          class="text-secondary hover:text-warning hover:bg-gray-600 block px-3 py-2 rounded-md text-base font-medium transition-all duration-200">
                         Contacto
                     </a>
@@ -168,7 +167,7 @@
                             </svg>
                         </button>
                         <div id="mobile-dropdown" class="hidden pl-6 space-y-1">
-                            <a href="#" class="text-secondary hover:text-warning hover:bg-gray-600 block px-3 py-2 rounded-md text-sm transition-all duration-200">
+                            <a href="facturacion.html" class="text-secondary hover:text-warning hover:bg-gray-600 block px-3 py-2 rounded-md text-sm transition-all duration-200">
                                 Facturar
                             </a>
                         </div>
@@ -200,13 +199,13 @@
 
         // Close mobile menu when clicking outside
         document.addEventListener('click', function(event) {
-            const menu = document.getElementById('menu');
-            const toggle = document.getElementById('menu-toggle');
+      const menu = document.getElementById('menu');
+      const toggle = document.getElementById('menu-toggle');
             
-            if (!menu.contains(event.target) && !toggle.contains(event.target)) {
-                menu.classList.add('hidden');
-                toggle.classList.add('hidden');
-            }
+      if (!menu.contains(event.target) && !toggle.contains(event.target)) {
+        menu.classList.add('hidden');
+        // No ocultar el botón hamburguesa
+      }
         });
     </script>
 </header>
@@ -268,7 +267,7 @@
   </footer> 
 
 
-
+  <script src="./js/tema.js"></script>
        <!-- JQuery-->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
    <!-- Notificaciones Toastr -->

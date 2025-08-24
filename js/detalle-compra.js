@@ -4,6 +4,7 @@ function showDetail(){
     let cartRowHTML=''
     let itemCount=0
     let total=0
+    let costoenvioCombo = 0;
     //Obtengo los items guardados
     const cart=getCart()
     if(cart.length >0){
@@ -12,6 +13,7 @@ function showDetail(){
             const price =parseFloat(item.price) || 0
             const quantity =parseFloat(item.quantity) || 0
             const subtotal= price * quantity
+            costoenvioCombo += parseInt(item.costoEnvio);
             cartRowHTML +=`<div class="grid grid-cols-5 gap-4 p-4 border-b border-gray-500 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-600 transition-colors items-center">
                 <div class="text-center">${item.name}</div>
                 <div class="text-center">
@@ -31,7 +33,8 @@ function showDetail(){
     document.getElementById("detail").innerHTML=cartRowHTML
     document.getElementById("total-items").textContent=`Total items: ${itemCount}`
     document.getElementById("total-compra").textContent="₡"+total.toFixed(2)
-
+    document.getElementById("costo-envio").textContent="₡"+costoenvioCombo.toFixed(2)
+    document.getElementById("resumen-envio").textContent="₡"+costoenvioCombo.toFixed(2)
 }
 function eliminarItem(idLibro){
     let cartArray=getCart()
@@ -43,6 +46,7 @@ function eliminarItem(idLibro){
     }
     saveCart(cartArray)
     showDetail()
+    
 }
 /**
  * Actualiza la cantidad de un item en el carrito.

@@ -46,14 +46,26 @@ function actualizarResumen() {
     });
 
     const envioSeleccionado = document.querySelector('input[name="shipping"]:checked')?.value || 'store';
-    const envio = envioSeleccionado === 'postal' ? 2500 : 0;
+    let costoenvioCombo = 0;
+    let costoEnvio = 0;
+    if(cartArray.length > 0){
+            cartArray.forEach(item => {
+            costoenvioCombo += parseInt(item.costoEnvio);
+        });
+    }
+    if(envioSeleccionado === 'postal' && cartArray.length > 0){
+        cartArray.forEach(item => {
+            costoEnvio += parseInt(item.costoEnvio);
+        });
+    }
+    document.getElementById('costo-envio').textContent = `₡${costoenvioCombo}`;
 
     // Actualiza subtotal y total
-    document.getElementById('total-compra').textContent = `₡${(subtotalTotal + envio).toLocaleString()}`;
+    document.getElementById('total-compra').textContent = `₡${(subtotalTotal + costoEnvio).toLocaleString()}`;
     document.getElementById('total-items').textContent = `Subtotal (${cartArray.length} productos)`;
 
     // Actualiza envío visible
-    document.getElementById('resumen-envio').textContent = envio === 0 ? 'Gratis' : `₡${envio.toLocaleString()}`;
+    document.getElementById('resumen-envio').textContent = costoEnvio === 0 ? 'Gratis' : `₡${costoEnvio}`;
 }
 
 
@@ -135,6 +147,15 @@ function mostrarFactura(medioPago, nombreTitular) {
     const facturaEl = document.getElementById('factura');
     facturaEl.innerHTML = `
         <div class="max-w-4xl mx-auto my-8 bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+                <div class="flex items-center">
+            <a class="text-gray-600" href="index.html">Inicio</a>
+            <svg class="w-4 h-4 text-gray-400 mx-2" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+                    <a class="text-gray-600" href="facturacion.html">Facturación</a>
+            <svg class="w-4 h-4 text-gray-400 mx-2" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+            <span id="categoria" class="text-gray-800 font-medium truncate max-w-xs sm:max-w-none">Factura</span>
+            </div>
             <h2 class="text-3xl font-bold mb-6 text-center dark:text-white">Listado de productos adquiridos</h2>
             
             <div class="mt-2 text-center">
@@ -161,7 +182,7 @@ function mostrarFactura(medioPago, nombreTitular) {
                 <span>Total de la compra</span>
                 <span id="factura-total"></span>
             </div>
-        </div>
+        </.div>
     `;
 
     const cartArray = getCart();
@@ -181,10 +202,15 @@ function mostrarFactura(medioPago, nombreTitular) {
     });
 
     const envioSeleccionado = document.querySelector('input[name="shipping"]:checked')?.value || 'store';
-    const envio = envioSeleccionado === 'postal' ? 2500 : 0;
-    const total = subtotalTotal + envio;
 
-    document.getElementById('factura-envio').textContent = envio === 0 ? 'Gratis' : `₡${envio.toLocaleString()}`;
+    const total = subtotalTotal + costoEnvio;
+    let costoEnvio = 0;
+    if(envioSeleccionado === 'postal' && cartArray.length > 0){
+        cartArray.forEach(item => {
+            costoEnvio += parseInt(item.costoEnvio);
+        });
+    }
+    document.getElementById('factura-envio').textContent = costoEnvio === 0 ? 'Gratis' : `₡${costoEnvio.toLocaleString()}`;
 
     document.getElementById('factura-total').textContent = `₡${total.toLocaleString()}`;
     facturaEl.classList.remove('hidden');

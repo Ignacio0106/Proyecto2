@@ -239,7 +239,7 @@
                         <div class="font-medium dark:text-white">Envío postal</div>
                         <div class="text-sm text-gray-500 dark:text-gray-400">Entrega en 2-5 días hábiles</div>
                     </div>
-                    <div class="font-semibold dark:text-white">₡2 500</div>
+                    <div id="costo-envio" class="font-semibold dark:text-white">₡2 500</div>
                 </label>
             </div>
         </div>
@@ -264,13 +264,19 @@
                 <button id="btnProcederPago" class="w-full bg-primary hover:bg-primary/95 hover:scale-102 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200">
                     Proceder al Pago
                 </button>
-                <button class="w-full border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 hover:scale-102 dark:hover:bg-gray-700 font-medium py-3 px-6 rounded-lg transition-colors duration-200">
+                <button onclick="window.location.href='catalogo-libros.html'" class="w-full border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 hover:scale-102 dark:hover:bg-gray-700 font-medium py-3 px-6 rounded-lg transition-colors duration-200">
                     Continuar Comprando
                 </button>
             </div>
         </div>
     </section>
     <section id="mediosPago" class="flex-col w-full max-w-[512px] py-5 hidden">
+        <div class="flex items-center">
+            <a class="text-gray-600" href="facturacion.html">Facturación</a>
+            <svg class="w-4 h-4 text-gray-400 mx-2" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+            <span id="categoria" class="text-gray-800 font-medium truncate max-w-xs sm:max-w-none">Medios de pago</span>
+        </div>
         <h2 class="text-black dark:text-white text-3xl font-bold text-center pb-3 ">Medios de Pago</h2>
             <form id="paymentForm">
                 <div class="flex flex-wrap px-4 py-3">
