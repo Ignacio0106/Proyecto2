@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'Información Enviada')
                   mostrarResumen()
                   grecaptcha.reset();
-                  
+                  this.reset();
           }
         });
 });
