@@ -33,7 +33,7 @@ function displayBooks(data){
   
   data.forEach(book => {
     const col = document.createElement("div");
-    col.className = "bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden border border-blue-600 hover:scale-105 transition-all duration-300";
+    col.className = "product-card bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden border border-blue-600 hover:scale-105 transition-all duration-300";
 
     col.innerHTML = `
       <div class="relative overflow-hidden">
@@ -134,26 +134,22 @@ function detalleProducto(id) {
   window.location.href = `detalle-producto-servicio.html?id=${id}`;
 }
 
-function comprarLibro(element) {
-addToCart(element);
-const $card = $(`.libro-item button[onclick="comprarLibro(${element})"]`).closest(".libro-item")
-const $title = $card.find('.libro-name');
+function comprarLibro(id) {
+  addToCart(id);
 
-console.log("Producto: ",$title)
-/*   $card.animate({
-  color: "white",
-  backgroundColor: "rgba(190, 190, 190, 1)"
-}); */
-//$card.toggle( "bounce", { times: 2 }, "slow" );
-//$card.toggle( "blind" );
-//$card.toggle( "clip" );
+  // Encontrar el botón
+  const btn = document.querySelector(`button[onclick="comprarLibro(${id})"]`);
+  if (!btn) return;
 
-// Ocultar el título con efecto drop
-$title.toggle("drop", { direction: "up" }, 500);
-// Volver a mostrar el título después de 1.2 segundos
-setTimeout(() => {
-  $title.show("drop", { direction: "down" }, 400);
-}, 1200);
+  // Encontrar la tarjeta completa
+  const card = btn.closest('.product-card');
+  if (!card) return;
+
+  // Reiniciar animación si se hace clic rápido varias veces
+  card.classList.remove('fly-anim');
+  // Forzar reflow para reiniciar la animación
+  void card.offsetWidth;
+  card.classList.add('fly-anim');
 }
 
 function displayCategorias() {
