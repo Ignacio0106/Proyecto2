@@ -35,7 +35,9 @@ function showDetail(){
     document.getElementById("total-compra").textContent="₡"+total.toFixed(0)
     document.getElementById("costo-envio").textContent="₡"+costoenvioCombo.toFixed(0)
     document.getElementById("resumen-envio").textContent="₡"+costoenvioCombo.toFixed(0)
+
 }
+
 function eliminarItem(idLibro){
     let cartArray=getCart()
     if(cartArray.length >0){

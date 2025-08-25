@@ -14,12 +14,17 @@ function addToCart(idLibro) {
     const book = tecnology.find(b => b.id == idLibro);
     if (!book) return;
 
+    const input = document.querySelector(`.product-card button[onclick="comprarLibro(${idLibro})"]`)
+                    .closest(".product-card")
+                    .querySelector(".libro-quantity");
+
+    let cantidad = parseInt(input.value) || 1;
     // Objeto a guardar
     const cartItem = {
         id: book.id,
         name: book.nombre,
         price: book.precio,
-        quantity: 1,
+        quantity: cantidad,
         costoEnvio: book.costoEnvio,
     };
 

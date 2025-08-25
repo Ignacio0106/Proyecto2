@@ -68,6 +68,10 @@ function displayBooks(data){
             <h5 class="text-xl font-bold text-center text-green-600 dark:text-green-400 mb-4">
               ¢${book.precio}
             </h5>
+            <div class="input-group mb-3 mt-8">
+            <span class="input-group-text block text-sm font-medium mb-1">Cantidad</span>
+            <input type="number" class="form-control libro-quantity w-full border border-gray-300 rounded-md px-3 py-1 libro-quantity" value="1" min="1">
+          </div>
           <div class="flex gap-2 mt-auto">
             <button class="flex-1 bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 flex items-center justify-center"
                     onclick="comprarLibro(${book.id})">

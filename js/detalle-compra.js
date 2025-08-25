@@ -30,8 +30,25 @@ function showDetail(){
     }
     document.getElementById("detail").innerHTML=cartRowHTML
     document.getElementById("total-items").textContent=`Total items: ${itemCount}`
-    document.getElementById("total-compra").textContent="₡"+total.toFixed(0)
+    document.getElementById("total-compra").textContent="₡"+total.toFixed(0);
+
+    const btnFacturacion = document.querySelector('a[href="facturacion.html"]');
+    if (btnFacturacion) {
+        if (cart.length === 0) {
+            btnFacturacion.classList.add('opacity-50');
+        } else {
+            btnFacturacion.classList.remove('opacity-50');
+        }
+    }
 }
+
+document.addEventListener('click', function(e) {
+    const btnFacturacion = e.target.closest('a[href="facturacion.html"]');
+    if (btnFacturacion && getCart().length === 0) {
+        e.preventDefault(); // Bloquea la navegación
+        toastr.info("El carrito está vacío, agrega productos antes de facturar.", "Carrito vacío");
+    }
+});
 function eliminarItem(idLibro){
     let cartArray=getCart()
     if(cartArray.length >0){
