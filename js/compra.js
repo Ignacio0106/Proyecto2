@@ -34,7 +34,7 @@ function addToCart(idLibro) {
     const indexItem = cartArray.findIndex(item => item.id === idLibro);
 
     if (indexItem !== -1) {
-        cartArray[indexItem].quantity += 1;
+        cartArray[indexItem].quantity += cantidad;
 
         toastr.info(
             `Cantidad de "${cartArray[indexItem].name}" actualizada a ${cartArray[indexItem].quantity}`,
