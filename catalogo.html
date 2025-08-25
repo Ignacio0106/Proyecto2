@@ -265,62 +265,6 @@
     </div>
   </footer> 
 <script>
-  // Funciones para el carrusel
-function changeSlide(carouselId, direction) {
-  const carousel = document.getElementById(carouselId);
-  const slides = carousel.querySelectorAll('.carousel-slide');
-  const indicators = carousel.querySelectorAll('.carousel-indicator');
-  
-  // Encontrar slide activo actual
-  let currentIndex = 0;
-  slides.forEach((slide, index) => {
-    if (!slide.classList.contains('hidden')) {
-      currentIndex = index;
-    }
-  });
-
-  // Calcular nuevo índice
-  let newIndex = currentIndex + direction;
-  if (newIndex >= slides.length) newIndex = 0;
-  if (newIndex < 0) newIndex = slides.length - 1;
-
-  // Actualizar slides
-  slides[currentIndex].classList.add('hidden');
-  slides[newIndex].classList.remove('hidden');
-
-  // Actualizar indicadores
-  if (indicators.length > 0) {
-    indicators[currentIndex].classList.remove('bg-white');
-    indicators[currentIndex].classList.add('bg-white', 'bg-opacity-50');
-    indicators[newIndex].classList.remove('bg-opacity-50');
-    indicators[newIndex].classList.add('bg-white');
-  }
-}
-
-function goToSlide(carouselId, targetIndex) {
-  const carousel = document.getElementById(carouselId);
-  const slides = carousel.querySelectorAll('.carousel-slide');
-  const indicators = carousel.querySelectorAll('.carousel-indicator');
-  
-  // Encontrar slide activo actual
-  let currentIndex = 0;
-  slides.forEach((slide, index) => {
-    if (!slide.classList.contains('hidden')) {
-      currentIndex = index;
-    }
-  });
-
-  // Actualizar slides
-  slides[currentIndex].classList.add('hidden');
-  slides[targetIndex].classList.remove('hidden');
-
-  // Actualizar indicadores
-  indicators[currentIndex].classList.remove('bg-white');
-  indicators[currentIndex].classList.add('bg-white', 'bg-opacity-50');
-  indicators[targetIndex].classList.remove('bg-opacity-50');
-  indicators[targetIndex].classList.add('bg-white');
-}
-
 // Auto-play opcional para el carrusel (cada 5 segundos)
 function startAutoPlay(carouselId) {
   setInterval(() => {
@@ -331,6 +275,7 @@ function startAutoPlay(carouselId) {
   }, 5000);
 }
 </script>
+
   <script src="./js/tema.js"></script>
   <script src="./js/compra.js"></script>
     <script src="./json/productos-TechZone.js"></script>
@@ -341,6 +286,33 @@ function startAutoPlay(carouselId) {
 <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
 <!-- Toastr JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script>
+// Script único para todos los carruseles
+document.querySelectorAll('[data-carousel]').forEach(function(carousel) {
+  const inner = carousel.querySelector('.carousel-inner');
+  const indicators = carousel.querySelectorAll('[data-slide]');
+  const prevBtn = carousel.querySelector('.carousel-prev');
+  const nextBtn = carousel.querySelector('.carousel-next');
+  let index = 0;
+  const total = inner.children.length;
+
+  function showSlide(i) {
+    index = (i + total) % total;
+    inner.style.transform = `translateX(-${index * 100}%)`;
+    indicators.forEach((btn, idx) => {
+      btn.classList.toggle('bg-white', idx === index);
+      btn.classList.toggle('bg-white/50', idx !== index);
+    });
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', () => showSlide(index - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => showSlide(index + 1));
+  indicators.forEach((btn, i) => btn.addEventListener('click', () => showSlide(i)));
+
+  setInterval(() => showSlide(index + 1), 4000);
+  showSlide(0);
+});
+</script>
 </body>
 
 </html>

@@ -4,7 +4,6 @@ function showDetail(){
     let cartRowHTML=''
     let itemCount=0
     let total=0
-    let costoenvioCombo = 0;
     //Obtengo los items guardados
     const cart=getCart()
     if(cart.length >0){
@@ -13,7 +12,6 @@ function showDetail(){
             const price =parseFloat(item.price) || 0
             const quantity =parseFloat(item.quantity) || 0
             const subtotal= price * quantity
-            costoenvioCombo += parseInt(item.costoEnvio);
             cartRowHTML +=`<div class="grid grid-cols-5 gap-4 p-4 border-b border-gray-500 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-600 transition-colors items-center">
                 <div class="text-center">${item.name}</div>
                 <div class="text-center">
@@ -21,8 +19,8 @@ function showDetail(){
                         class="w-16 text-center border border-gray-300 dark:border-gray-600 rounded-md p-1 dark:bg-gray-700 dark:text-white"
                         data-id="${item.id}" onchange="updateCartItemQty(this)">
                 </div>
-                <div class="text-center">${item.price.toFixed(2)}</div>
-                <div class="text-center">${subtotal.toFixed(2)}</div>
+                <div class="text-center">${item.price.toFixed(0)}</div>
+                <div class="text-center">${subtotal.toFixed(0)}</div>
                 <div class="flex justify-center items-center">
                 <button onclick="eliminarItem(${item.id})" class="flex justify-center items-center text-red-600 hover:bg-red-200 hover:scale-110 transition-transform duration-200 ease-in-out rounded-2xl size-10"><svg xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-trash"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 7l16 0" /><path d="M10 11l0 6" /><path d="M14 11l0 6" /><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" /><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" /></svg></button>
             </div>
@@ -32,9 +30,7 @@ function showDetail(){
     }
     document.getElementById("detail").innerHTML=cartRowHTML
     document.getElementById("total-items").textContent=`Total items: ${itemCount}`
-    document.getElementById("total-compra").textContent="₡"+total.toFixed(2)
-    document.getElementById("costo-envio").textContent="₡"+costoenvioCombo.toFixed(2)
-    document.getElementById("resumen-envio").textContent="₡"+costoenvioCombo.toFixed(2)
+    document.getElementById("total-compra").textContent="₡"+total.toFixed(0)
 }
 function eliminarItem(idLibro){
     let cartArray=getCart()

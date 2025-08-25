@@ -1,4 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Carrusel automático
+  function startAutoPlay() {
+    const carouselInner = document.getElementById("carousel-inner");
+    if (!carouselInner) return;
+    const slides = Array.from(carouselInner.children);
+    let index = 0;
+    setInterval(() => {
+      index = (index + 1) % slides.length;
+      carouselInner.style.transform = `translateX(-${index * 100}%)`;
+    }, 5000);
+  }
+  startAutoPlay();
   // Obtiene el parámetro "id" de la URL para identificar qué producto mostrar
   const urlParams = new URLSearchParams(window.location.search);
   const idParam = urlParams.get("id");
