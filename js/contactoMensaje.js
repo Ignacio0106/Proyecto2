@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('contact-form').addEventListener("submit", function (e) {
+            mostrarResumen()
+      });
     document.getElementById('contact-form').addEventListener("submit", function (e) {
           e.preventDefault();
           const response = grecaptcha.getResponse();
@@ -13,6 +16,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 });
 
+function ocultarResumen(){
+      document.getElementById("resultadoForm").classList.add("hidden");
+      document.getElementById("toddoContacto").classList.remove("hidden");
+      document.getElementById("resumen-mensaje").textContent = "";
+      document.getElementById("resumen-nombre").textContent = "";
+      document.getElementById("resumen-email").textContent = "";
+      document.getElementById("resumen-telefono").textContent = "";
+      document.getElementById("resumen-fecha").textContent = "";
+      document.getElementById("resumen-genero").textContent = "";
+      document.getElementById("resumen-consulta").textContent = "";
+}
+function mostrarResumen(){
+      document.getElementById("resultadoForm").classList.remove("hidden");
+      document.getElementById("toddoContacto").classList.add("hidden");
+      const form = document.getElementById("contact-form");
+      document.getElementById("resumen-nombre").textContent = form.nombre.value;
+      document.getElementById("resumen-email").textContent = form.email.value;
+      document.getElementById("resumen-telefono").textContent = form.telefono.value;
+      document.getElementById("resumen-fecha").textContent = form.fechaNacimiento.value;
+      document.getElementById("resumen-genero").textContent = form.genero.value;
+      document.getElementById("resumen-consulta").textContent = form.tipoConsulta.value;
+      document.getElementById("resumen-mensaje").textContent = form.Mensaje.value;
+}
 toastr.options = {
   "closeButton": true,
   "debug": false,
