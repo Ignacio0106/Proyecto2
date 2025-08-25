@@ -1,7 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('contact-form').addEventListener("submit", function (e) {
-            mostrarResumen()
-      });
     document.getElementById('contact-form').addEventListener("submit", function (e) {
           e.preventDefault();
           const response = grecaptcha.getResponse();
@@ -11,7 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
           } else {
                 toastr.info("Gracias por contactarnos",
     'Información Enviada')
-                  this.reset();
+                  mostrarResumen()
+                  grecaptcha.reset();
+                  
           }
         });
 });
